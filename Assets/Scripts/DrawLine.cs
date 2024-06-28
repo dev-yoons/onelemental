@@ -28,7 +28,7 @@ public class DrawLine : MonoBehaviour
             if (node != null)
             {
                 StageRuleManager stageRuleManager = StageRuleObject.GetComponent<StageRuleManager>();
-                if (!stageRuleManager.IsUserNode(node))
+                if (!stageRuleManager.IsClickableNode(node))
                     return;
 
                 if (_startNode != null)

@@ -6,10 +6,10 @@ using Onelemental.Enum;
 namespace Onelemental.Managers
 {
     public class StageRuleManager : MonoBehaviour
-    { 
-        private Dictionary<Elemental, Node> ElementalMainNodes;
-        private List<GameObject> ElementalAIPlayers;
+    {
+        private Dictionary<Elemental, AIPlayer> ElementalAIPlayers = new Dictionary<Elemental, AIPlayer>();
         public Elemental PlayerElemental = Elemental.Fire;
+        public List<Node> AllNodesInStage = new List<Node>();
 
         public void Start()
         {
@@ -17,29 +17,40 @@ namespace Onelemental.Managers
             Node[] startnodes = Resources.FindObjectsOfTypeAll<Node>();
             foreach (Node startnode in startnodes)
             {
+                AllNodesInStage.Add(startnode);
+
                 if (startnode.GetCurrentElemental() != Elemental.Neutral) 
                 {
                     if (startnode.GetCurrentElemental() == PlayerElemental)
                         continue;
 
-                    if (startnode.IsMainNode)
+                    if (!ElementalAIPlayers.ContainsKey(startnode.GetCurrentElemental()))
                     {
-                        ElementalMainNodes.Add(startnode.GetCurrentElemental(), startnode);
-
                         GameObject newAIPlayer = new GameObject { };
                         AIPlayer aiPlayerComp = newAIPlayer.AddComponent<AIPlayer>();
 
-                        aiPlayerComp.AIElemental = startnode.GetCurrentElemental();
-
-                        ElementalAIPlayers.Add(newAIPlayer); 
+                        ElementalAIPlayers.Add(startnode.GetCurrentElemental(), aiPlayerComp); 
                     }
+                    
+                    AIPlayer player = ElementalAIPlayers[startnode.GetCurrentElemental()];
+
+                    if (startnode.IsMainNode)
+                        player.Initialize(startnode);  
+
+                    player.AddOwningNode(startnode);
                 }
             }
         }
 
-        public bool IsUserNode(Node node)
+        public bool IsClickableNode(Node node)
         {
-            return PlayerElemental == node.GetCurrentElemental();
+            if (PlayerElemental != node.GetCurrentElemental())
+                return false;
+
+            if (node.CurrentWorshipers <= 10)
+                return false;
+
+            return true;
         }
     }
 }

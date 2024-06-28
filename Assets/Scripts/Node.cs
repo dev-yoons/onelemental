@@ -5,9 +5,10 @@ using Onelemental.Enum;
 
 public class Node : MonoBehaviour
 {
-    public int CurrentWorshipers { get; set; } = 30;
-    public int WorshipersToSend { get; set; } = 10;
+    public int CurrentWorshipers { get; set; } = 30; 
     public float Speed { get; set; } = 10f;
+
+    public const float LeastWorshipers = 10;
 
     public Elemental StartElemental = Elemental.Neutral;
 
@@ -22,6 +23,10 @@ public class Node : MonoBehaviour
 
     public SpriteRenderer NodeRenderer;
 
+    public TextMesh NodeTextMesh;
+
+    public List<Node> ConnectedNodes;
+
     /// <summary>
     /// 다른 노드로 공격 보내기
     /// </summary>
@@ -31,6 +36,7 @@ public class Node : MonoBehaviour
     void Start()
     {
         SetCurrentElemental(StartElemental);
+        NodeTextMesh.text = CurrentWorshipers.ToString();
     }
 
     public void SendAttack(GameObject destination)
@@ -42,18 +48,23 @@ public class Node : MonoBehaviour
         _attackCoroutine = StartCoroutine(SendWorshipers(destination));
     }
 
+    private void DecreaseWorshipers()
+    {
+        CurrentWorshipers--;
+        NodeTextMesh.text = CurrentWorshipers.ToString(); 
+    }
+
     private IEnumerator SendWorshipers(GameObject destination)
     {
-        while (WorshipersToSend > 0)
+        while (CurrentWorshipers > LeastWorshipers)
         {
             // 숭배자 생성 및 초기화
             GameObject worshiper = Instantiate(worshiperObject, transform.position, Quaternion.identity);
             Worshiper worshiperComponent = worshiper.GetComponent<Worshiper>();
             worshiperComponent.Initialize(destination, Speed);
 
-            // 숭배자 수 감소
-            WorshipersToSend--;
-            CurrentWorshipers--;
+            // 숭배자 수 감소 
+            DecreaseWorshipers();
             
             // 잠시 대기 후 반복
             yield return new WaitForSeconds(0.5f); // 필요에 따라 시간 조정

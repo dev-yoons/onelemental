@@ -5,7 +5,7 @@ using UnityEngine;
 public class Worshiper : MonoBehaviour
 {
     private GameObject _targetNode;
-    private float _speed;
+    private float _speed; 
 
     public void Initialize(GameObject target, float moveSpeed)
     {
@@ -26,5 +26,10 @@ public class Worshiper : MonoBehaviour
                 Destroy(gameObject); // 숭배자 파괴
             }
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("What");
     }
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Worshiper : MonoBehaviour
 {
-    private Node _targetNode;
+    private GameObject _targetNode;
     private float _speed;
 
-    public void Initialize(Node target, float moveSpeed)
+    public void Initialize(GameObject target, float moveSpeed)
     {
         _targetNode = target;
         _speed = moveSpeed;

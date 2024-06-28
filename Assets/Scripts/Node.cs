@@ -16,7 +16,7 @@ public class Node : MonoBehaviour
     /// 다른 노드로 공격 보내기
     /// </summary>
     /// <param name="destination"></param>
-    public void SendAttack(Node destination)
+    public void SendAttack(GameObject destination)
     {
         if (_attackCoroutine != null)
         {
@@ -25,7 +25,7 @@ public class Node : MonoBehaviour
         _attackCoroutine = StartCoroutine(SendWorshipers(destination));
     }
 
-    private IEnumerator SendWorshipers(Node destination)
+    private IEnumerator SendWorshipers(GameObject destination)
     {
         while (WorshipersToSend > 0)
         {

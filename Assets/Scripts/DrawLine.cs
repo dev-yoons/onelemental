@@ -21,12 +21,18 @@ public class DrawLine : MonoBehaviour
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-            if (hit.collider != null && hit.collider.gameObject.CompareTag("Node")) // Node에 태그 추가 필요
+            if (hit.collider != null && hit.collider.gameObject.CompareTag("Node"))
             {
+                if (_startNode != null)
+                {
+                    // _startNode.SetHighlight(false); // 이전 노드의 하이라이트 해제
+                }
                 _isDragging = true;
                 _startNode = hit.collider.gameObject;
+                // _startNode.SetHighlight(true); // 현재 노드 하이라이트 설정
                 _lineRenderer.enabled = true;
                 _lineRenderer.SetPosition(0, _startNode.transform. position);
+                
             }
         }
 
@@ -53,6 +59,8 @@ public class DrawLine : MonoBehaviour
             {
                 _lineRenderer.enabled = false;
             }
+
+            // _startNode.SetHighlight(false); // 드래그가 끝나면 하이라이트
         }
     }
 }

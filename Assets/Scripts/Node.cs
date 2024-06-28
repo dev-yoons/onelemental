@@ -5,22 +5,34 @@ using Onelemental.Enum;
 
 public class Node : MonoBehaviour
 {
-    public int CurrentWorshipers { get; set; }
-    public int WorshipersToSend { get; set; }
-    public float Speed { get; set; }
+    public int CurrentWorshipers { get; set; } = 30;
+    public int WorshipersToSend { get; set; } = 10;
+    public float Speed { get; set; } = 10f;
 
-    public Elemental CurrentOwningElemental;
+    public Elemental StartElemental = Elemental.Neutral;
+
+    private Elemental CurrentElemental = Elemental.Neutral;
+    public Elemental GetCurrentElemental() { return CurrentElemental; }
 
     public bool IsMainNode = false;
     
     private Coroutine _attackCoroutine;
 
-    public GameObject worshiperObject; 
-    
+    public GameObject worshiperObject;
+
+    public SpriteRenderer NodeRenderer;
+
     /// <summary>
     /// 다른 노드로 공격 보내기
     /// </summary>
     /// <param name="destination"></param>
+    /// 
+
+    void Start()
+    {
+        SetCurrentElemental(StartElemental);
+    }
+
     public void SendAttack(GameObject destination)
     {
         if (_attackCoroutine != null)
@@ -47,4 +59,27 @@ public class Node : MonoBehaviour
             yield return new WaitForSeconds(0.5f); // 필요에 따라 시간 조정
         }
     }
+    public void SetCurrentElemental(Elemental newElemental)
+    {
+        CurrentElemental = newElemental;
+
+        // 아트 에셋 생기면 그 때 바꿉니다.
+        switch(newElemental)
+        {
+            case Elemental.Fire:
+                NodeRenderer.color = Color.red;
+                break;
+            case Elemental.Water:
+                NodeRenderer.color = Color.blue;
+                break;
+            case Elemental.Wind:
+                NodeRenderer.color = Color.gray;
+                break;
+            case Elemental.Ground:
+                NodeRenderer.color = Color.yellow;
+                break; 
+        }
+    }
+
+
 }

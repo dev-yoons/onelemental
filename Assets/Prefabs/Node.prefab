@@ -101,9 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eebff6e58e247208b1e9a4def45562f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentOwningElemental: 0
+  StartElemental: 0
   IsMainNode: 0
-  worshiperObject: {fileID: 0}
+  worshiperObject: {fileID: 7963283298764097707, guid: 4de51644797bf42d4b9ae5e45940cd75, type: 3}
+  NodeRenderer: {fileID: 5510152769825606854}
 --- !u!120 &5421639338329014970
 LineRenderer:
   serializedVersion: 2

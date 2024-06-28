@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Onelemental.Managers;
 
 public class DrawLine : MonoBehaviour
 {
     public LineRenderer _lineRenderer;
     public bool _isDragging = false;
     public Node _startNode;
+
+    public GameObject StageRuleObject;
 
     void Start()
     {
@@ -24,6 +27,10 @@ public class DrawLine : MonoBehaviour
             Node node = hit.collider?.GetComponent<Node>();
             if (node != null)
             {
+                StageRuleManager stageRuleManager = StageRuleObject.GetComponent<StageRuleManager>();
+                if (!stageRuleManager.IsUserNode(node))
+                    return;
+
                 if (_startNode != null)
                 {
                     // _startNode.SetHighlight(false); // 이전 노드의 표시 해제
@@ -55,6 +62,7 @@ public class DrawLine : MonoBehaviour
             if (endNode != null && endNode != _startNode)
             {
                 _lineRenderer.SetPosition(1, endNode.transform.position);
+                _startNode.SendAttack(hit.collider.gameObject);
             }
             else
             {

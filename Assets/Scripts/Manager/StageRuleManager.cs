@@ -17,24 +17,29 @@ namespace Onelemental.Managers
             Node[] startnodes = Resources.FindObjectsOfTypeAll<Node>();
             foreach (Node startnode in startnodes)
             {
-                if (startnode.CurrentOwningElemental != Elemental.Neutral) 
+                if (startnode.GetCurrentElemental() != Elemental.Neutral) 
                 {
-                    if (startnode.CurrentOwningElemental == PlayerElemental)
+                    if (startnode.GetCurrentElemental() == PlayerElemental)
                         continue;
 
                     if (startnode.IsMainNode)
                     {
-                        ElementalMainNodes.Add(startnode.CurrentOwningElemental, startnode);
+                        ElementalMainNodes.Add(startnode.GetCurrentElemental(), startnode);
 
                         GameObject newAIPlayer = new GameObject { };
                         AIPlayer aiPlayerComp = newAIPlayer.AddComponent<AIPlayer>();
 
-                        aiPlayerComp.AIElemental = startnode.CurrentOwningElemental;
+                        aiPlayerComp.AIElemental = startnode.GetCurrentElemental();
 
                         ElementalAIPlayers.Add(newAIPlayer); 
                     }
                 }
             }
+        }
+
+        public bool IsUserNode(Node node)
+        {
+            return PlayerElemental == node.GetCurrentElemental();
         }
     }
 }

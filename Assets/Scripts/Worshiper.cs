@@ -12,12 +12,15 @@ public class Worshiper : MonoBehaviour
 
     public Elemental GetWorshiperElemental() { return _elemental; }
 
+    public SpriteRenderer WorshiperRenderer;
+
     public void Initialize(GameObject start, GameObject target, float moveSpeed)
     {
         _startNode = start;
         _targetNode = target; 
         _speed = moveSpeed;
         _elemental = start.GetComponent<Node>().GetCurrentElemental();
+        SetElementalColor(_elemental);
     }
 
     void Update()
@@ -48,6 +51,25 @@ public class Worshiper : MonoBehaviour
         {
             Destroy(other.gameObject);
             Destroy(gameObject);
+        }
+    }
+    public void SetElementalColor(Elemental newElemental)
+    { 
+        // 아트 에셋 생기면 그 때 바꿉니다.
+        switch (newElemental)
+        {
+            case Elemental.Fire:
+                WorshiperRenderer.color = Color.red;
+                break;
+            case Elemental.Water:
+                WorshiperRenderer.color = Color.blue;
+                break;
+            case Elemental.Wind:
+                WorshiperRenderer.color = Color.gray;
+                break;
+            case Elemental.Ground:
+                WorshiperRenderer.color = Color.yellow;
+                break;
         }
     }
 }

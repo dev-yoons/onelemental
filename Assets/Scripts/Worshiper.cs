@@ -38,9 +38,16 @@ public class Worshiper : MonoBehaviour
             }
         }
     }
-
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("What");
+        Worshiper otherWorshiper = other.gameObject.GetComponent<Worshiper>();
+        if (!otherWorshiper)
+            return;
+
+        if (otherWorshiper._targetNode == _startNode)
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
     }
 }

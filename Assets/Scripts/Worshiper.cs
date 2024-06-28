@@ -1,16 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Onelemental.Enum;
 
 public class Worshiper : MonoBehaviour
 {
     private GameObject _targetNode;
-    private float _speed; 
+    private GameObject _startNode;
+    private float _speed;
+    private Elemental _elemental;
 
-    public void Initialize(GameObject target, float moveSpeed)
+    public Elemental GetWorshiperElemental() { return _elemental; }
+
+    public void Initialize(GameObject start, GameObject target, float moveSpeed)
     {
-        _targetNode = target;
+        _startNode = start;
+        _targetNode = target; 
         _speed = moveSpeed;
+        _elemental = start.GetComponent<Node>().GetCurrentElemental();
     }
 
     void Update()
@@ -23,6 +30,10 @@ public class Worshiper : MonoBehaviour
             // 목표 지점에 도달 시
             if (Vector3.Distance(transform.position, _targetNode.transform.position) < 0.1f)
             {
+                Node node = _targetNode.GetComponent<Node>();
+
+                node.GetNewWorshiper(this);
+
                 Destroy(gameObject); // 숭배자 파괴
             }
         }

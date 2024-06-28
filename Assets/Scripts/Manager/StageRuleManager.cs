@@ -7,12 +7,14 @@ namespace Onelemental.Managers
 {
     public class StageRuleManager : MonoBehaviour
     {
-        private Dictionary<Elemental, AIPlayer> ElementalAIPlayers = new Dictionary<Elemental, AIPlayer>();
+        private Dictionary<Elemental, Player> ElementalPlayers = new Dictionary<Elemental, Player>();
         public Elemental PlayerElemental = Elemental.Fire;
         public List<Node> AllNodesInStage = new List<Node>();
 
         public void Start()
         {
+            GameManager.StageRuleManager = this;
+
             // 초기 세팅 읽어오기
             Node[] startnodes = Resources.FindObjectsOfTypeAll<Node>();
             foreach (Node startnode in startnodes)
@@ -22,22 +24,32 @@ namespace Onelemental.Managers
                 if (startnode.GetCurrentElemental() != Elemental.Neutral) 
                 {
                     if (startnode.GetCurrentElemental() == PlayerElemental)
-                        continue;
-
-                    if (!ElementalAIPlayers.ContainsKey(startnode.GetCurrentElemental()))
                     {
-                        GameObject newAIPlayer = new GameObject { };
-                        AIPlayer aiPlayerComp = newAIPlayer.AddComponent<AIPlayer>();
+                        if (!ElementalPlayers.ContainsKey(PlayerElemental))
+                        {
+                            GameObject newPlayer = new GameObject { };
+                            Player playerComp = newPlayer.AddComponent<Player>();
 
-                        ElementalAIPlayers.Add(startnode.GetCurrentElemental(), aiPlayerComp); 
+                            ElementalPlayers.Add(startnode.GetCurrentElemental(), playerComp);
+                        }
                     }
-                    
-                    AIPlayer player = ElementalAIPlayers[startnode.GetCurrentElemental()];
+                    else
+                    {
+                        if (!ElementalPlayers.ContainsKey(startnode.GetCurrentElemental()))
+                        {
+                            GameObject newAIPlayer = new GameObject { };
+                            AIPlayer aiPlayerComp = newAIPlayer.AddComponent<AIPlayer>();
+
+                            ElementalPlayers.Add(startnode.GetCurrentElemental(), aiPlayerComp);
+                        }
+                    }
+
+                    Player player = ElementalPlayers[startnode.GetCurrentElemental()];
 
                     if (startnode.IsMainNode)
-                        player.Initialize(startnode);  
+                        player.Initialize(startnode);
 
-                    player.AddOwningNode(startnode);
+                    player.AddOwningNode(startnode); 
                 }
             }
         }
@@ -51,6 +63,19 @@ namespace Onelemental.Managers
                 return false;
 
             return true;
+        }
+
+        public void NodeOwnerChanged(Node node, Elemental newElemental)
+        {
+            if (node.GetCurrentElemental() != Elemental.Neutral)
+            { 
+                Player losePlayer = ElementalPlayers[node.GetCurrentElemental()];
+                losePlayer.LoseOwningNode(node);
+            } 
+            Player winPlayer = ElementalPlayers[newElemental];
+            winPlayer.AddOwningNode(node);
+
+            node.SetCurrentElemental(newElemental);
         }
     }
 }

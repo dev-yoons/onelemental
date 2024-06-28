@@ -3,30 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Onelemental.Enum;
 
-public class AIPlayer : MonoBehaviour
-{
-    private List<Node> AIOwningNode = new List<Node>();
-    private Node AIMainNode;
-
-    public Elemental AIElemental;
-
+public class AIPlayer : Player
+{  
     private bool bIsDefeated = false;
 
     private Coroutine aiCoroutine;
 
-    public float AIPatternTime = 5.0f;
-
-    public void Initialize(Node mainNode)
-    {
-        AIMainNode = mainNode;
-        AIElemental = AIMainNode.GetCurrentElemental();
-    }
-
-    public void AddOwningNode(Node newNode)
-    {
-        AIOwningNode.Add(newNode);
-    }
-
+    public float AIPatternTime = 5.0f; 
 
     void Start()
     {
@@ -37,7 +20,7 @@ public class AIPlayer : MonoBehaviour
     {
         while (!bIsDefeated)
         {
-            foreach(Node node in AIOwningNode) 
+            foreach(Node node in OwningNodes) 
             {
                 AINodeCheck(node);
             }
@@ -93,20 +76,5 @@ public class AIPlayer : MonoBehaviour
             return;
 
         ainode.SendAttack(targetableNodes[Random.Range(0, targetableNodes.Count)].gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (AIMainNode == null)
-        {
-            AIDefeat();
-        }
-    }
-
-    public void AIDefeat()
-    {
-        Debug.Log("AI ÆÐ¹è!");
-        bIsDefeated = true;
-    }
+    } 
 }

@@ -7,7 +7,12 @@ namespace Onelemental.Managers
     public class GameManager : MonoBehaviour
     {
         static GameManager instance;
-        public static GameManager Instance { get { Init(); return instance; } }  
+        public static GameManager Instance { get { Init(); return instance; } }
+
+        private StageRuleManager stageRuleManager;
+
+        public static StageRuleManager StageRuleManager { get { return Instance.stageRuleManager; } set { Instance.stageRuleManager = value; } }
+
         void Awake()
         {
             Debug.Log("Hi");

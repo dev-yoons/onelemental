@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Onelemental.Enum;
+using Onelemental.Managers;
 
 public class Node : MonoBehaviour
 {
+    public int StartWorshipers = 30;
     public int CurrentWorshipers { get; set; } = 30; 
     public float Speed { get; set; } = 10f;
 
@@ -35,6 +37,7 @@ public class Node : MonoBehaviour
 
     void Start()
     {
+        CurrentWorshipers = StartWorshipers;
         SetCurrentElemental(StartElemental);
         NodeTextMesh.text = CurrentWorshipers.ToString();
     }
@@ -51,7 +54,33 @@ public class Node : MonoBehaviour
     private void DecreaseWorshipers()
     {
         CurrentWorshipers--;
-        NodeTextMesh.text = CurrentWorshipers.ToString(); 
+        NodeTextMesh.text = CurrentWorshipers.ToString();
+    }
+    public void GetNewWorshiper(Worshiper newWorshiper)
+    {
+        if (newWorshiper.GetWorshiperElemental() == CurrentElemental)
+        {
+            CurrentWorshipers++;
+        }
+        else
+        {
+            CurrentWorshipers--;
+            if (CurrentWorshipers == 0)
+            {
+                NodeOwnerChanged(newWorshiper);
+            }
+        }
+
+        NodeTextMesh.text = CurrentWorshipers.ToString();
+    }
+
+    private void NodeOwnerChanged(Worshiper newWorshiper)
+    {
+        CurrentWorshipers = 10;
+
+        GameManager.StageRuleManager.NodeOwnerChanged(this, newWorshiper.GetWorshiperElemental());
+
+        SetCurrentElemental(newWorshiper.GetWorshiperElemental());
     }
 
     private IEnumerator SendWorshipers(GameObject destination)
@@ -61,7 +90,7 @@ public class Node : MonoBehaviour
             // 숭배자 생성 및 초기화
             GameObject worshiper = Instantiate(worshiperObject, transform.position, Quaternion.identity);
             Worshiper worshiperComponent = worshiper.GetComponent<Worshiper>();
-            worshiperComponent.Initialize(destination, Speed);
+            worshiperComponent.Initialize(gameObject, destination, Speed);
 
             // 숭배자 수 감소 
             DecreaseWorshipers();

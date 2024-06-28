@@ -10,6 +10,8 @@ public class Node : MonoBehaviour
     public int CurrentWorshipers { get; set; } = 30; 
     public float Speed { get; set; } = 10f;
 
+    public float ProductionTime = 3.0f;
+
     public const float LeastWorshipers = 10;
 
     public Elemental StartElemental = Elemental.Neutral;
@@ -39,7 +41,10 @@ public class Node : MonoBehaviour
     {
         CurrentWorshipers = StartWorshipers;
         SetCurrentElemental(StartElemental);
+        if (StartElemental == Elemental.Neutral)
+            CurrentWorshipers = 0;
         NodeTextMesh.text = CurrentWorshipers.ToString();
+        StartCoroutine(Production());
     }
 
     public void SendAttack(GameObject destination)
@@ -65,7 +70,7 @@ public class Node : MonoBehaviour
         else
         {
             CurrentWorshipers--;
-            if (CurrentWorshipers == 0)
+            if (CurrentWorshipers <= 0)
             {
                 NodeOwnerChanged(newWorshiper);
             }
@@ -119,7 +124,19 @@ public class Node : MonoBehaviour
                 NodeRenderer.color = Color.yellow;
                 break; 
         }
+
+        StartCoroutine(Production());
     }
 
+    private IEnumerator Production()
+    {
+        while(CurrentElemental != Elemental.Neutral)
+        {
+            CurrentWorshipers++; 
+            NodeTextMesh.text = CurrentWorshipers.ToString();
+
+            yield return new WaitForSeconds(ProductionTime);
+        } 
+    }
 
 }

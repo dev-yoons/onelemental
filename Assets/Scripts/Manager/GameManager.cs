@@ -14,8 +14,7 @@ namespace Onelemental.Managers
         public static StageRuleManager StageRuleManager { get { return Instance.stageRuleManager; } set { Instance.stageRuleManager = value; } }
 
         void Awake()
-        {
-            Debug.Log("Hi");
+        { 
             Init();
         }
 

@@ -9,13 +9,24 @@ public class AIPlayer : Player
 
     private Coroutine aiCoroutine;
 
-    public float AIPatternTime = 5.0f; 
+    public float AIPatternTime = 5.0f;
 
+    public float AIPatternStartDelayTime = 1.0f;
+
+    // 시작 지연 시간 걸고 AI 패턴 시작
     void Start()
     {
+        StartCoroutine(StartAIPattern());
+    }
+
+    private IEnumerator StartAIPattern()
+    {
+        yield return new WaitForSeconds(AIPatternStartDelayTime);
+
         aiCoroutine = StartCoroutine(PlayAIBehavior());
     }
 
+    // AI 패턴
     private IEnumerator PlayAIBehavior()
     {
         while (!bIsDefeated)

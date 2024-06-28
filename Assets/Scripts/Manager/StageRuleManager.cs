@@ -11,11 +11,13 @@ namespace Onelemental.Managers
         public Elemental PlayerElemental = Elemental.Fire;
         public List<Node> AllNodesInStage = new List<Node>();
 
+
+        // 처음에 스테이지에 배치되어있는 노드들을 읽고,
+        // Player와 AIPlayer 들을 생성하여 노드들을 할당합니다.
         public void Start()
         {
             GameManager.StageRuleManager = this;
-
-            // 초기 세팅 읽어오기
+             
             Node[] startnodes = Resources.FindObjectsOfTypeAll<Node>();
             foreach (Node startnode in startnodes)
             {
@@ -54,6 +56,7 @@ namespace Onelemental.Managers
             }
         }
 
+        // 현재 클릭 가능한 노드인지 확인합니다.
         public bool IsClickableNode(Node node)
         {
             if (PlayerElemental != node.GetCurrentElemental())
@@ -65,6 +68,7 @@ namespace Onelemental.Managers
             return true;
         }
 
+        // 노드의 주인이 바뀌었을 때 호출됩니다.
         public void NodeOwnerChanged(Node node, Elemental newElemental)
         {
             if (node.GetCurrentElemental() != Elemental.Neutral)

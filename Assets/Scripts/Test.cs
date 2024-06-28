@@ -14,7 +14,7 @@ public class Test : MonoBehaviour
     {
         node = Node.GetComponent<Node>();
         
-        node.Speed = 10f; 
+        node.WorshiperSpeed = 10f; 
         node.CurrentWorshipers = 30;
         node.SendAttack(Target);
     }

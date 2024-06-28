@@ -41,6 +41,9 @@ public class Worshiper : MonoBehaviour
             }
         }
     }
+
+    // 다른 Worshiper와 충돌판정합니다.
+    // 같은 길에 있을 때만 판정합니다.
     void OnTriggerEnter2D(Collider2D other)
     {
         Worshiper otherWorshiper = other.gameObject.GetComponent<Worshiper>();
@@ -53,6 +56,8 @@ public class Worshiper : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    // 색깔 표시. 아트 에셋 나오면 교체합니다.
     public void SetElementalColor(Elemental newElemental)
     { 
         // 아트 에셋 생기면 그 때 바꿉니다.

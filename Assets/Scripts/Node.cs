@@ -6,12 +6,15 @@ using Onelemental.Managers;
 
 public class Node : MonoBehaviour
 {
+    // 노드의 첫 숭배자 숫자. 중립이면 자동으로 0으로 덮어써집니다.
     public int StartWorshipers = 30;
     public int CurrentWorshipers { get; set; } = 30; 
-    public float Speed { get; set; } = 10f;
+     
+    public float WorshiperSpeed { get; set; } = 10f;
 
     public float ProductionTime = 3.0f;
 
+    // 이 숫자보다 숭배자가 적어지면 공격 불가 상태가 됩니다.
     public const float LeastWorshipers = 10;
 
     public Elemental StartElemental = Elemental.Neutral;
@@ -61,6 +64,8 @@ public class Node : MonoBehaviour
         CurrentWorshipers--;
         NodeTextMesh.text = CurrentWorshipers.ToString();
     }
+
+    // Worshiper가 node에 닿았을 때 호출됩니다.
     public void GetNewWorshiper(Worshiper newWorshiper)
     {
         if (newWorshiper.GetWorshiperElemental() == CurrentElemental)
@@ -83,9 +88,7 @@ public class Node : MonoBehaviour
     {
         CurrentWorshipers = 10;
 
-        GameManager.StageRuleManager.NodeOwnerChanged(this, newWorshiper.GetWorshiperElemental());
-
-        SetCurrentElemental(newWorshiper.GetWorshiperElemental());
+        GameManager.StageRuleManager.NodeOwnerChanged(this, newWorshiper.GetWorshiperElemental()); 
     }
 
     private IEnumerator SendWorshipers(GameObject destination)
@@ -95,7 +98,7 @@ public class Node : MonoBehaviour
             // 숭배자 생성 및 초기화
             GameObject worshiper = Instantiate(worshiperObject, transform.position, Quaternion.identity);
             Worshiper worshiperComponent = worshiper.GetComponent<Worshiper>();
-            worshiperComponent.Initialize(gameObject, destination, Speed);
+            worshiperComponent.Initialize(gameObject, destination, WorshiperSpeed);
 
             // 숭배자 수 감소 
             DecreaseWorshipers();

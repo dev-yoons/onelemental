@@ -6,7 +6,7 @@ public class DrawLine : MonoBehaviour
 {
     public LineRenderer _lineRenderer;
     public bool _isDragging = false;
-    public GameObject _startNode;
+    public Node _startNode;
 
     void Start()
     {
@@ -21,15 +21,16 @@ public class DrawLine : MonoBehaviour
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-            if (hit.collider != null && hit.collider.gameObject.CompareTag("Node"))
+            Node node = hit.collider?.GetComponent<Node>();
+            if (node != null)
             {
                 if (_startNode != null)
                 {
-                    // _startNode.SetHighlight(false); // 이전 노드의 하이라이트 해제
+                    // _startNode.SetHighlight(false); // 이전 노드의 표시 해제
                 }
                 _isDragging = true;
-                _startNode = hit.collider.gameObject;
-                // _startNode.SetHighlight(true); // 현재 노드 하이라이트 설정
+                _startNode = node;
+                // _startNode.SetHighlight(true); 현재 노드 표시
                 _lineRenderer.enabled = true;
                 _lineRenderer.SetPosition(0, _startNode.transform. position);
                 
@@ -50,17 +51,17 @@ public class DrawLine : MonoBehaviour
             _isDragging = false;
 
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (hit.collider != null && hit.collider.gameObject.CompareTag("Node") && hit.collider.gameObject != _startNode)
+            Node endNode = hit.collider?.GetComponent<Node>();
+            if (endNode != null && endNode != _startNode)
             {
-                // 다른 노드 위에서 마우스를 떼었을 때
-                _lineRenderer.SetPosition(1, hit.collider.gameObject.transform.position);
+                _lineRenderer.SetPosition(1, endNode.transform.position);
             }
             else
             {
-                _lineRenderer.enabled = false;
+                _lineRenderer.enabled = false; 
             }
 
-            // _startNode.SetHighlight(false); // 드래그가 끝나면 하이라이트
+            // _startNode.SetHighlight(false); // 드래그가 끝나면 표시
         }
     }
 }

@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Onelemental.Enum;
 
 public class Node : MonoBehaviour
 {
     public int CurrentWorshipers { get; set; }
     public int WorshipersToSend { get; set; }
     public float Speed { get; set; }
+
+    public Elemental CurrentOwningElemental;
+
+    public bool IsMainNode = false;
     
     private Coroutine _attackCoroutine;
 
-    public GameObject worshiperObject;
+    public GameObject worshiperObject; 
     
     /// <summary>
     /// 다른 노드로 공격 보내기

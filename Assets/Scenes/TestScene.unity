@@ -374,6 +374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eebff6e58e247208b1e9a4def45562f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentOwningElemental: 0
+  bIsMainNode: 0
   worshiperObject: {fileID: 7963283298764097707, guid: 4de51644797bf42d4b9ae5e45940cd75, type: 3}
 --- !u!212 &1656770299
 SpriteRenderer:

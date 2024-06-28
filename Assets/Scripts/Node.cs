@@ -52,11 +52,16 @@ public class Node : MonoBehaviour
 
     public void SendAttack(GameObject destination)
     {
+        StopSendingAttack();
+        _attackCoroutine = StartCoroutine(SendWorshipers(destination));
+    }
+
+    public void StopSendingAttack()
+    {
         if (_attackCoroutine != null)
         {
             StopCoroutine(_attackCoroutine);
         }
-        _attackCoroutine = StartCoroutine(SendWorshipers(destination));
     }
 
     private void DecreaseWorshipers()
@@ -134,8 +139,8 @@ public class Node : MonoBehaviour
     private IEnumerator Production()
     {
         while(CurrentElemental != Elemental.Neutral)
-        {
-            CurrentWorshipers++; 
+        {  
+            CurrentWorshipers++;  
             NodeTextMesh.text = CurrentWorshipers.ToString();
 
             yield return new WaitForSeconds(ProductionTime);

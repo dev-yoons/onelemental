@@ -28,8 +28,12 @@ public class Player : MonoBehaviour
         }
     }
 
+     
     public void Defeat()
     {
+        foreach (Node node in OwningNodes)
+        {
 
+        }
     }
 }

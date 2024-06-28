@@ -9,7 +9,9 @@ public class DrawLine : MonoBehaviour
     public bool _isDragging = false;
     public Node _startNode;
 
-    public GameObject StageRuleObject;
+    public GameObject LinePrefab;
+
+    private List<Line> CurrentLines = new List<Line>();
 
     void Start()
     {
@@ -26,9 +28,8 @@ public class DrawLine : MonoBehaviour
 
             Node node = hit.collider?.GetComponent<Node>();
             if (node != null)
-            {
-                StageRuleManager stageRuleManager = StageRuleObject.GetComponent<StageRuleManager>();
-                if (!stageRuleManager.IsClickableNode(node))
+            { 
+                if (!GameManager.StageRuleManager.IsClickableNode(node))
                     return;
 
                 if (_startNode != null)
@@ -41,6 +42,16 @@ public class DrawLine : MonoBehaviour
                 _lineRenderer.enabled = true;
                 _lineRenderer.SetPosition(0, _startNode.transform. position);
                 
+            }
+            else
+            { 
+                Line line = hit.collider?.GetComponent<Line>();
+                if (line != null)
+                { 
+                    line.startNode.StopSendingAttack();
+                    CurrentLines.Remove(line);
+                    Destroy(line.gameObject);
+                }
             }
         }
 
@@ -61,8 +72,14 @@ public class DrawLine : MonoBehaviour
             Node endNode = hit.collider?.GetComponent<Node>();
             if (endNode != null && endNode != _startNode)
             {
+                GameObject lineObject = Instantiate(LinePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+
+                lineObject.GetComponent<Line>().Init(_startNode, endNode);
+
+                CurrentLines.Add(lineObject.GetComponent<Line>());
+
                 _lineRenderer.SetPosition(1, endNode.transform.position);
-                _startNode.SendAttack(hit.collider.gameObject);
+                _startNode.SendAttack(endNode.gameObject);
             }
             else
             {

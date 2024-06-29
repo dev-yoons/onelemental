@@ -159,11 +159,13 @@ namespace Onelemental.Managers
                     return false;
                 if (variable.Key == PlayerElemental && variable.Value == true)
                     return false;
-            }
-            gameClear.SetActive(true);
+            } 
             Debug.Log("win!");
             if (gameTimer != null)
                 gameTimer.StopTimer();
+
+            gameClear.GetComponent<ClearWidget>().Init(gameTimer.GetElapsedTime()); ;
+            gameClear.SetActive(true);
             return true;
         } 
 

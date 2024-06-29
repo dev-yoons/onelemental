@@ -30,6 +30,11 @@ public class Timer : MonoBehaviour
         isRunning = false;
     }
 
+    public float GetElapsedTime()
+    {
+        return elapsedTime;
+    }
+
     public void ResetTimer()
     {
         elapsedTime = 0;

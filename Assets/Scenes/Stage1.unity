@@ -816,7 +816,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 863216534}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1201770172}
+        m_TargetAssemblyTypeName: LoadSceneManager, Assembly-CSharp
+        m_MethodName: OnClickRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &863216534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1073,7 +1085,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 881038288}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1201770172}
+        m_TargetAssemblyTypeName: LoadSceneManager, Assembly-CSharp
+        m_MethodName: NextStage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &881038288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1438,7 +1462,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1023723036}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1201770172}
+        m_TargetAssemblyTypeName: LoadSceneManager, Assembly-CSharp
+        m_MethodName: GoHome
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1023723036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1675,6 +1711,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1201770171}
+  - component: {fileID: 1201770172}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -1705,6 +1742,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1201770172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201770170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7edffd5100b3e64a8edceee2855e711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1234805933 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
@@ -2286,7 +2335,7 @@ PrefabInstance:
       objectReference: {fileID: 1019707587}
     - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: ProductionTime
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: StartElemental
@@ -2690,7 +2739,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1841218137}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1201770172}
+        m_TargetAssemblyTypeName: LoadSceneManager, Assembly-CSharp
+        m_MethodName: GoHome
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1841218137
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ namespace Onelemental.Managers
         private Dictionary<Elemental, Player> ElementalPlayers = new Dictionary<Elemental, Player>();
         public Elemental PlayerElemental = Elemental.Fire;
         public List<Node> AllNodesInStage = new List<Node>();
+        public Dictionary <Elemental, bool> IsDefeat = new Dictionary<Elemental, bool>();
 
 
         // ó���� ���������� ��ġ�Ǿ��ִ� ������ �а�,
@@ -17,7 +18,12 @@ namespace Onelemental.Managers
         public void Start()
         {
             GameManager.StageRuleManager = this;
-             
+            
+            IsDefeat.Add(Elemental.Fire, false);
+            IsDefeat.Add(Elemental.Water, false);
+            IsDefeat.Add(Elemental.Wind, false);
+            IsDefeat.Add(Elemental.Ground, false);
+
             Node[] startnodes = Resources.FindObjectsOfTypeAll<Node>();
             foreach (Node startnode in startnodes)
             {

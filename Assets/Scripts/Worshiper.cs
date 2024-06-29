@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Onelemental.Enum;
+using Onelemental.Managers;
 
 public class Worshiper : MonoBehaviour
 {
@@ -39,6 +40,12 @@ public class Worshiper : MonoBehaviour
 
                 Destroy(gameObject); // 숭배자 파괴
             }
+            // 원소신 본진 파괴 시
+            if (GameManager.StageRuleManager.IsDefeat[_elemental] == true)
+            {
+                Destroy(gameObject);
+            }
+
         }
     }
 

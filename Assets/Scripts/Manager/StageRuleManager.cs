@@ -8,7 +8,7 @@ namespace Onelemental.Managers
     public class StageRuleManager : MonoBehaviour
     {
         private Dictionary<Elemental, Player> ElementalPlayers = new Dictionary<Elemental, Player>();
-        public Elemental PlayerElemental = Elemental.Fire;
+        public Elemental PlayerElemental = Elemental.Fire; // 나중에 받아오는 코드로 수정
         public List<Node> AllNodesInStage = new List<Node>();
         public Dictionary <Elemental, bool> IsDefeat = new Dictionary<Elemental, bool>();
 

@@ -3324,12 +3324,12 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c6af8845b4711480391584702962221c, type: 3}
+  m_Resource: {fileID: 8300000, guid: c6af8845b4711480391584702962221c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -6426,7 +6426,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB300\uC9C0"
+  m_text: "\uD14C\uB77C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee6eef998984244928f13ba907a3d7f8, type: 2}
   m_sharedMaterial: {fileID: 624255218097571704, guid: ee6eef998984244928f13ba907a3d7f8, type: 2}

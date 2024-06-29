@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Onelemental.Enum;
 using Unity.VisualScripting;
+using Onelemental.Managers;
 
 public class Player : MonoBehaviour
 {
@@ -46,7 +47,7 @@ public class Player : MonoBehaviour
         }
         
         MainNode.IsMainNode = false;
-        
+        GameManager.StageRuleManager.IsDefeat[Elemental] = true;
         Debug.Log("Defeat");
         // 플레이어 화면에서 사라짐
         Destroy(this.gameObject);

@@ -13,7 +13,7 @@ namespace Onelemental.Managers
         public List<Node> AllNodesInStage = new List<Node>();
         public Dictionary <Elemental, bool> IsDefeat = new Dictionary<Elemental, bool>();
 
-        private bool _playerWins;
+        private bool _playerWins = false;
 
 
         // ó���� ���������� ��ġ�Ǿ��ִ� ������ �а�,
@@ -70,7 +70,8 @@ namespace Onelemental.Managers
 
         public void Update()
         {
-            _playerWins = PlayerWins();
+            if(!_playerWins)
+                _playerWins = PlayerWins();
         }
 
         // ���� Ŭ�� ������ ������� Ȯ���մϴ�.

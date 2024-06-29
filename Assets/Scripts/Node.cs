@@ -56,6 +56,11 @@ public class Node : MonoBehaviour
         curProductionTime = ProductionTime;
     } 
 
+    public bool IsAttackingTo(GameObject go)
+    {
+        return AttackLine.ContainsKey(go);
+    }
+
     public void SendAttack(GameObject destination, Line attackLine)
     {
         if (AttackCorroutine.ContainsKey(destination))

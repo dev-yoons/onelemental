@@ -14,6 +14,12 @@ public class Line : MonoBehaviour
         startNode = instartNode;
         endNode = inendNode;
 
+        if (startNode.IsAttackingTo(inendNode.gameObject))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
         lineRenderer.SetPosition(0, instartNode.transform.position);
         lineRenderer.SetPosition(1, inendNode.transform.position);

@@ -122,15 +122,15 @@ public class Node : MonoBehaviour
             
             // 잠시 대기 후 반복
             yield return new WaitForSeconds(0.5f); // 필요에 따라 시간 조정
-        } 
-
-        SendingEnd();
-    }
-
-    private void SendingEnd()
-    {
+        }
         if (CurrentWorshipers <= LeastWorshipers)
         {
+            SendingEnd();
+        }
+    }
+
+    public void SendingEnd()
+    {
             List<GameObject> corroutineKeys = new List<GameObject>();
 
             foreach (GameObject attackNode in AttackLine.Keys)
@@ -142,8 +142,6 @@ public class Node : MonoBehaviour
             { 
                 StopSendingAttack(attackNode);
             }
-        }
-
     }
     public void SetCurrentElemental(Elemental newElemental)
     {

@@ -88,12 +88,17 @@ public class AIPlayer : Player
         }
 
         if (targetableNodes.Count == 0)
+        {
+            ainode.SendingEnd();
             return;
+        }
 
         targetNode = targetableNodes[Random.Range(0, targetableNodes.Count)];
         lineObject = Instantiate(GameManager.PrefabManager.LinePrefab, new Vector3(0, 0, 0), Quaternion.identity);
         lineObject.GetComponent<Line>().Init(ainode, targetNode);
         ainode.SendAttack(targetNode.gameObject, lineObject.GetComponent<Line>());
+
+
     }
 
     public override void Defeat()

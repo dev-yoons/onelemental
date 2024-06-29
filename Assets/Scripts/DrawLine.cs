@@ -9,9 +9,7 @@ public class DrawLine : MonoBehaviour
     public bool _isDragging = false;
     public Node _startNode;
 
-    public GameObject LinePrefab;
-
-    private List<Line> CurrentLines = new List<Line>();
+    public GameObject LinePrefab; 
 
     void Start()
     {
@@ -48,8 +46,7 @@ public class DrawLine : MonoBehaviour
                 Line line = hit.collider?.GetComponent<Line>();
                 if (line != null)
                 { 
-                    line.startNode.StopSendingAttack();
-                    CurrentLines.Remove(line);
+                    line.startNode.StopSendingAttack(line.endNode.gameObject); 
                     Destroy(line.gameObject);
                 }
             }
@@ -74,17 +71,12 @@ public class DrawLine : MonoBehaviour
             {
                 GameObject lineObject = Instantiate(LinePrefab, new Vector3(0, 0, 0), Quaternion.identity);
 
-                lineObject.GetComponent<Line>().Init(_startNode, endNode);
+                lineObject.GetComponent<Line>().Init(_startNode, endNode); 
 
-                CurrentLines.Add(lineObject.GetComponent<Line>());
+                _startNode.SendAttack(endNode.gameObject, lineObject.GetComponent<Line>());
+            }
 
-                _lineRenderer.SetPosition(1, endNode.transform.position);
-                _startNode.SendAttack(endNode.gameObject);
-            }
-            else
-            {
-                _lineRenderer.enabled = false; 
-            }
+            _lineRenderer.enabled = false; 
 
             // _startNode.SetHighlight(false); // 드래그가 끝나면 표시
         }

@@ -14,6 +14,8 @@ public class Node : MonoBehaviour
 
     public float ProductionTime = 3.0f;
 
+    private float curProductionTime;
+
     // 이 숫자보다 숭배자가 적어지면 공격 불가 상태가 됩니다.
     public const float LeastWorshipers = 10;
 
@@ -22,9 +24,7 @@ public class Node : MonoBehaviour
     private Elemental CurrentElemental = Elemental.Neutral;
     public Elemental GetCurrentElemental() { return CurrentElemental; }
 
-    public bool IsMainNode = false;
-    
-    private Coroutine _attackCoroutine;
+    public bool IsMainNode = false; 
 
     public GameObject worshiperObject;
 
@@ -33,6 +33,9 @@ public class Node : MonoBehaviour
     public TextMesh NodeTextMesh;
 
     public List<Node> ConnectedNodes;
+
+    private Dictionary<GameObject, Coroutine> AttackCorroutine = new Dictionary<GameObject, Coroutine>();
+    private Dictionary<GameObject, Line> AttackLine = new Dictionary<GameObject, Line>();
 
     /// <summary>
     /// 다른 노드로 공격 보내기
@@ -47,26 +50,34 @@ public class Node : MonoBehaviour
         if (StartElemental == Elemental.Neutral)
             CurrentWorshipers = 0;
         NodeTextMesh.text = CurrentWorshipers.ToString();
-        StartCoroutine(Production());
+        curProductionTime = ProductionTime;
+    } 
+
+    public void SendAttack(GameObject destination, Line attackLine)
+    {
+        if (AttackCorroutine.ContainsKey(destination))
+            return;
+
+        Coroutine newAttack = StartCoroutine(SendWorshipers(destination));
+        AttackCorroutine.Add(destination, newAttack);
+        AttackLine.Add(destination, attackLine);
     }
 
-    public void SendAttack(GameObject destination)
+    public void StopSendingAttack(GameObject destination)
     {
-        StopSendingAttack();
-        _attackCoroutine = StartCoroutine(SendWorshipers(destination));
-    }
-
-    public void StopSendingAttack()
-    {
-        if (_attackCoroutine != null)
+        if (AttackCorroutine.ContainsKey(destination))
         {
-            StopCoroutine(_attackCoroutine);
+            StopCoroutine(AttackCorroutine[destination]);
+            AttackCorroutine.Remove(destination);
         }
+        Destroy(AttackLine[destination].gameObject);
+        AttackLine.Remove(destination); 
     }
 
     private void DecreaseWorshipers()
     {
         CurrentWorshipers--;
+ 
         NodeTextMesh.text = CurrentWorshipers.ToString();
     }
 
@@ -110,7 +121,28 @@ public class Node : MonoBehaviour
             
             // 잠시 대기 후 반복
             yield return new WaitForSeconds(0.5f); // 필요에 따라 시간 조정
+        } 
+
+        SendingEnd();
+    }
+
+    private void SendingEnd()
+    {
+        if (CurrentWorshipers <= LeastWorshipers)
+        {
+            List<GameObject> corroutineKeys = new List<GameObject>();
+
+            foreach (GameObject attackNode in AttackLine.Keys)
+            {
+                corroutineKeys.Add(attackNode);
+            }
+
+            foreach (GameObject attackNode in corroutineKeys)
+            { 
+                StopSendingAttack(attackNode);
+            }
         }
+
     }
     public void SetCurrentElemental(Elemental newElemental)
     {
@@ -131,20 +163,21 @@ public class Node : MonoBehaviour
             case Elemental.Ground:
                 NodeRenderer.color = Color.yellow;
                 break; 
-        }
-
-        StartCoroutine(Production());
-    }
-
-    private IEnumerator Production()
-    {
-        while(CurrentElemental != Elemental.Neutral)
-        {  
-            CurrentWorshipers++;  
-            NodeTextMesh.text = CurrentWorshipers.ToString();
-
-            yield return new WaitForSeconds(ProductionTime);
         } 
-    }
+    } 
 
+    private void Update()
+    {
+        curProductionTime -= Time.deltaTime;
+        if (curProductionTime <= 0)
+        {
+            if (CurrentElemental != Elemental.Neutral)
+            {
+                CurrentWorshipers++;
+                NodeTextMesh.text = CurrentWorshipers.ToString();
+                curProductionTime = ProductionTime; 
+            }
+
+        } 
+    } 
 }

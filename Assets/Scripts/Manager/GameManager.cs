@@ -9,10 +9,14 @@ namespace Onelemental.Managers
         static GameManager instance;
         public static GameManager Instance { get { Init(); return instance; } }
 
-        private StageRuleManager stageRuleManager;
+        private StageRuleManager stageRuleManager; 
 
         public static StageRuleManager StageRuleManager { get { return Instance.stageRuleManager; } set { Instance.stageRuleManager = value; } }
 
+
+        private PrefabManager prefabManager;
+
+        public static PrefabManager PrefabManager { get { return Instance.prefabManager; } set { Instance.prefabManager = value; } }
         void Awake()
         { 
             Init();
@@ -30,7 +34,7 @@ namespace Onelemental.Managers
                 }
                 instance = go.GetComponent<GameManager>();
                 DontDestroyOnLoad(instance.gameObject);
-            }
+            } 
         }
     }
 }

@@ -9,10 +9,14 @@ public class Line : MonoBehaviour
 
     // Start is called before the first frame update
     public void Init(Node instartNode, Node inendNode)
-    {   
+    {
         // 충돌 판정 구현해주세요.
 
-        startNode = instartNode;
+        LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
+        lineRenderer.SetPosition(0, instartNode.transform.position);
+        lineRenderer.SetPosition(1, inendNode.transform.position);  
+
+        startNode = instartNode; 
         endNode = inendNode;
 
     }

@@ -5,7 +5,7 @@ using UnityEngine.PlayerLoop;
 
 public class Test : MonoBehaviour
 {
-    public GameObject Node;
+/*    public GameObject Node;
     public GameObject Target;
     
     public Node node;
@@ -17,5 +17,5 @@ public class Test : MonoBehaviour
         node.WorshiperSpeed = 10f; 
         node.CurrentWorshipers = 30;
         node.SendAttack(Target);
-    }
+    }*/
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Onelemental.Enum;
+using Onelemental.Managers;
 
 public class AIPlayer : Player
 {  
@@ -52,7 +53,7 @@ public class AIPlayer : Player
 
         // 연결된 거점지 중 중립지가 있는가
         bool bFlag = false;
-        
+        GameObject lineObject;
         foreach (Node connectednode in ainode.ConnectedNodes)
         {
             if (connectednode.GetCurrentElemental() == Elemental.Neutral)
@@ -65,7 +66,9 @@ public class AIPlayer : Player
         // 있다면 대상거점지로 이동
         if (bFlag)
         {
-            ainode.SendAttack(targetNode.gameObject);
+            lineObject = Instantiate(GameManager.PrefabManager.LinePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            lineObject.GetComponent<Line>().Init(ainode, targetNode);
+            ainode.SendAttack(targetNode.gameObject, lineObject.GetComponent<Line>());
             return;
         }
 
@@ -86,6 +89,9 @@ public class AIPlayer : Player
         if (targetableNodes.Count == 0)
             return;
 
-        ainode.SendAttack(targetableNodes[Random.Range(0, targetableNodes.Count)].gameObject);
+        targetNode = targetableNodes[Random.Range(0, targetableNodes.Count)];
+        lineObject = Instantiate(GameManager.PrefabManager.LinePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        lineObject.GetComponent<Line>().Init(ainode, targetNode);
+        ainode.SendAttack(targetNode.gameObject, lineObject.GetComponent<Line>());
     } 
 }

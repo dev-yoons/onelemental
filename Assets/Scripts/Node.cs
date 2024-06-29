@@ -72,7 +72,7 @@ public class Node : MonoBehaviour
             AttackCorroutine.Remove(destination);
         }
         Destroy(AttackLine[destination].gameObject);
-        AttackLine.Remove(destination); 
+        AttackLine.Remove(destination);
     }
 
     private void DecreaseWorshipers()
@@ -174,6 +174,12 @@ public class Node : MonoBehaviour
     public bool IsConnectedToNode(Node node)
     {
         return ConnectedNodes.Contains(node);
+    }
+
+    // node가 어떤 노드로부터 공격받고 있는지 확인.
+    public bool IsBeingAttackedBy(Node node)
+    {
+        return AttackLine.ContainsKey(node.gameObject);
     }
 
     private void Update()

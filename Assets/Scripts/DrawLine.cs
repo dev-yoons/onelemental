@@ -69,11 +69,15 @@ public class DrawLine : MonoBehaviour
             Node endNode = hit.collider?.GetComponent<Node>();
             if (endNode != null && endNode != _startNode && _startNode.IsConnectedToNode(endNode))
             {
-                GameObject lineObject = Instantiate(GameManager.PrefabManager.LinePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                // endNode가 플레이어의 노드인지 && startNode에 공격을 보내고 있는지 확인
+                if (!(GameManager.StageRuleManager.PlayerOwnsNode(endNode) && endNode.IsBeingAttackedBy(_startNode)))
+                {
+                    GameObject lineObject = Instantiate(GameManager.PrefabManager.LinePrefab, new Vector3(0, 0, 0), Quaternion.identity);
 
-                lineObject.GetComponent<Line>().Init(_startNode, endNode); 
+                    lineObject.GetComponent<Line>().Init(_startNode, endNode); 
 
-                _startNode.SendAttack(endNode.gameObject, lineObject.GetComponent<Line>());
+                    _startNode.SendAttack(endNode.gameObject, lineObject.GetComponent<Line>());
+                }
             }
 
             _lineRenderer.enabled = false; 

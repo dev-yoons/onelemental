@@ -66,22 +66,7 @@ public class Worshiper : MonoBehaviour
 
     // 색깔 표시. 아트 에셋 나오면 교체합니다.
     public void SetElementalColor(Elemental newElemental)
-    { 
-        // 아트 에셋 생기면 그 때 바꿉니다.
-        switch (newElemental)
-        {
-            case Elemental.Fire:
-                WorshiperRenderer.color = Color.red;
-                break;
-            case Elemental.Water:
-                WorshiperRenderer.color = Color.blue;
-                break;
-            case Elemental.Wind:
-                WorshiperRenderer.color = Color.gray;
-                break;
-            case Elemental.Ground:
-                WorshiperRenderer.color = Color.yellow;
-                break;
-        }
+    {
+        WorshiperRenderer.color = EnumStatics.GetElementalColor(newElemental); 
     }
 }

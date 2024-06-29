@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     protected List<Node> OwningNodes = new List<Node>();
     protected Node MainNode;
 
-    public Elemental Elemental; 
+    public Elemental Elemental;
     
     public virtual void Initialize(Node mainNode, Elemental elemental)
     {

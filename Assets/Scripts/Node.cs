@@ -73,7 +73,7 @@ public class Node : MonoBehaviour
         }
         Destroy(AttackLine[destination].gameObject);
         AttackLine.Remove(destination);
-    }
+    } 
 
     private void DecreaseWorshipers()
     {
@@ -147,25 +147,7 @@ public class Node : MonoBehaviour
     {
         CurrentElemental = newElemental;
 
-        // 아트 에셋 생기면 그 때 바꿉니다.
-        switch(newElemental)
-        {
-            case Elemental.Fire:
-                NodeRenderer.color = Color.red;
-                break;
-            case Elemental.Water:
-                NodeRenderer.color = Color.blue;
-                break;
-            case Elemental.Wind:
-                NodeRenderer.color = Color.gray;
-                break;
-            case Elemental.Ground:
-                NodeRenderer.color = Color.yellow;
-                break;
-            case Elemental.Neutral:
-                NodeRenderer.color = Color.white;
-                break;
-        } 
+        NodeRenderer.color = EnumStatics.GetElementalColor(newElemental); 
     }
 
     // node가 ConncectedNodes 리스트에 있는지 확인.

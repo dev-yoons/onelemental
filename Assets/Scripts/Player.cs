@@ -37,12 +37,13 @@ public class Player : MonoBehaviour
     }
      
     public virtual void Defeat()
-    {
+    { 
         for (int i = OwningNodes.Count-1; i>=0; i--)
         {
             OwningNodes[i].SetCurrentElemental(Elemental.Neutral);
             OwningNodes[i].CurrentWorshipers = 0;
             OwningNodes[i].NodeTextMesh.text = OwningNodes[i].CurrentWorshipers.ToString();
+            OwningNodes[i].SendingEnd();
             OwningNodes.Remove(OwningNodes[i]);
         }
         

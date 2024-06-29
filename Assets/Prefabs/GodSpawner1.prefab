@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8422793757848110618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2657865246772002335}
+  - component: {fileID: 5514672190307571838}
+  m_Layer: 0
+  m_Name: GodSpawner1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2657865246772002335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8422793757848110618}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.6605902, y: 1.0267367, z: 0.054577526}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5514672190307571838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8422793757848110618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24fadd799b791a747aee95352dea5df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireGodPrefab: {fileID: 6585229158572693755, guid: 0c81ea9217ddac741bc1d8971812e98b, type: 3}
+  WaterGodPrefab: {fileID: 341394772126635414, guid: c7613f4f7e5376347b12f4aaad2db601, type: 3}
+  WindGodPrefab: {fileID: 177493966459752005, guid: 4c1a231568b101d43ac8dfb0223fbf9e, type: 3}
+  GroundGodPrefab: {fileID: 6585229158572693755, guid: 0c81ea9217ddac741bc1d8971812e98b, type: 3}

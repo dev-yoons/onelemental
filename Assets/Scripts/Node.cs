@@ -45,6 +45,9 @@ public class Node : MonoBehaviour
     public Sprite wind;
     public Sprite ground;
 
+    // 신 이미지
+    public GameObject GodSprite;
+
     public TextMeshPro NodeTextMesh;
 
     public List<Node> ConnectedNodes = new List<Node>();

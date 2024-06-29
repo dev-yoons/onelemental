@@ -5,7 +5,7 @@ using Onelemental.Managers;
 
 public class PrefabManager : MonoBehaviour
 {
-    public GameObject LinePrefab;
+    public GameObject LinePrefab; 
 
     public void Start()
     {

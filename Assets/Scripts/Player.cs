@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
         MainNode.IsMainNode = true;
         Elemental = elemental;
         AddOwningNode(mainNode);
+
+        MainNode.GodSprite.GetComponent<GodImageSpawner>().SetGod(elemental);
     }
     public void AddOwningNode(Node newNode)
     {

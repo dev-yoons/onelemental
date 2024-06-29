@@ -14,6 +14,10 @@ public class Worshiper : MonoBehaviour
     public Elemental GetWorshiperElemental() { return _elemental; }
 
     public SpriteRenderer WorshiperRenderer;
+    public Sprite fireWorshiper;
+    public Sprite waterWorshiper;
+    public Sprite windWorshiper;
+    public Sprite groundWorshiper;
 
     public void Initialize(GameObject start, GameObject target, float moveSpeed)
     {
@@ -98,6 +102,20 @@ public class Worshiper : MonoBehaviour
     // 색깔 표시. 아트 에셋 나오면 교체합니다.
     public void SetElementalColor(Elemental newElemental)
     {
-        WorshiperRenderer.color = EnumStatics.GetElementalColor(newElemental); 
+        switch (newElemental)
+        {
+            case Elemental.Fire :
+                WorshiperRenderer.sprite = fireWorshiper;
+                break;
+            case Elemental.Water :
+                WorshiperRenderer.sprite = waterWorshiper;
+                break;
+            case Elemental.Wind :
+                WorshiperRenderer.sprite = windWorshiper;
+                break;
+            case Elemental.Ground :
+                WorshiperRenderer.sprite = groundWorshiper;
+                break;
+        }
     }
 }

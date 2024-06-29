@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 7963283298764097707}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8074825, y: -1.173932, z: 0}
-  m_LocalScale: {x: 0.3913, y: 0.3913, z: 0.3913}
+  m_LocalPosition: {x: -1.8191, y: -1.1623, z: 0}
+  m_LocalScale: {x: 0.90374124, y: 0.90374124, z: 0.90374124}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,6 +102,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WorshiperRenderer: {fileID: 7700567922714002329}
+  fireWorshiper: {fileID: -7010950108511632228, guid: 9db29e7210cb146559293d12e223e9b6, type: 3}
+  waterWorshiper: {fileID: -3418874670035494972, guid: 138cf25152154447e984010f9502b2eb, type: 3}
+  windWorshiper: {fileID: 4789547036352273753, guid: 7cb6b4635ea2c46b8b852ff6d704db86, type: 3}
+  groundWorshiper: {fileID: -4443886859276567487, guid: a33ad776bf89b43ae931dd8749cdf38d, type: 3}
 --- !u!58 &2570908442640592574
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -32,7 +32,7 @@ public class Node : MonoBehaviour
 
     public TextMesh NodeTextMesh;
 
-    public List<Node> ConnectedNodes;
+    public List<Node> ConnectedNodes = new List<Node>();
 
     private Dictionary<GameObject, Coroutine> AttackCorroutine = new Dictionary<GameObject, Coroutine>();
     private Dictionary<GameObject, Line> AttackLine = new Dictionary<GameObject, Line>();

@@ -93,7 +93,26 @@ public class Node : MonoBehaviour
         }
         else
         {
-            CurrentWorshipers--;
+            int damage = 1;
+
+            if(newWorshiper.GetWorshiperElemental() == Elemental.Fire)
+            {
+                if (UnityEngine.Random.value < EnumStatics.FireDoubleAttackRatio)
+                {
+                    damage += EnumStatics.FireAttackAdditionalDamage;
+                }
+            }   
+            
+            if (GetCurrentElemental() == Elemental.Ground)
+            {
+                if (UnityEngine.Random.value < EnumStatics.GroundProtectRatio)
+                {
+                    damage = 0;
+                }
+            }
+
+            CurrentWorshipers -= damage;
+
             if (CurrentWorshipers <= 0)
             {
                 NodeOwnerChanged(newWorshiper);
@@ -183,8 +202,16 @@ public class Node : MonoBehaviour
             if (CurrentElemental != Elemental.Neutral)
             {
                 CurrentWorshipers++;
-                NodeTextMesh.text = CurrentWorshipers.ToString();
-                curProductionTime = ProductionTime; 
+                NodeTextMesh.text = CurrentWorshipers.ToString(); 
+
+                if (GetCurrentElemental() == Elemental.Water)
+                {
+                    curProductionTime = (ProductionTime - EnumStatics.WaterProductionReduceTime);
+                }
+                else
+                {
+                    curProductionTime = ProductionTime; 
+                } 
             }
 
         } 

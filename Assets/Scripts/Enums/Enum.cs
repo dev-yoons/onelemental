@@ -13,7 +13,13 @@ namespace Onelemental.Enum
     } 
 
     public class EnumStatics
-    {  
+    { 
+        static public float FireDoubleAttackRatio = 0.1f;
+        static public int FireAttackAdditionalDamage = 1;
+        static public float WaterProductionReduceTime = 0.1f;
+        static public float WindAdditionalSpeed = 1.0f;
+        static public float GroundProtectRatio = 0.1f; 
+
         static public Color GetElementalColor(Elemental elemental)
         {
             switch (elemental)

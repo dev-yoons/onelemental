@@ -22,6 +22,8 @@ public class Worshiper : MonoBehaviour
         _speed = moveSpeed;
         _elemental = start.GetComponent<Node>().GetCurrentElemental();
         SetElementalColor(_elemental);
+        if (_elemental == Elemental.Wind)
+            _speed += EnumStatics.WindAdditionalSpeed; 
     }
 
     void Update()

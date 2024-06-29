@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine; 
+using UnityEngine;
+using Onelemental.Enum;
 
 namespace Onelemental.Managers
 {
@@ -17,6 +18,9 @@ namespace Onelemental.Managers
         private PrefabManager prefabManager;
 
         public static PrefabManager PrefabManager { get { return Instance.prefabManager; } set { Instance.prefabManager = value; } }
+
+        public Elemental PlayerElemental;
+
         void Awake()
         { 
             Init();
@@ -35,6 +39,6 @@ namespace Onelemental.Managers
                 instance = go.GetComponent<GameManager>();
                 DontDestroyOnLoad(instance.gameObject);
             } 
-        }
+        } 
     }
 }

@@ -26,6 +26,7 @@ public class SelectManager : MonoBehaviour
     private void OnButtonClicked(Elemental selectedElement)
     {
         SelectedElemental = selectedElement;
+        GameManager.Instance.PlayerElemental = selectedElement;
         Debug.Log(SelectedElemental.ToString());
         Debug.Log(selectedElement.ToString());
         SceneManager.LoadScene("Stage1");

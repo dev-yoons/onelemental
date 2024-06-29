@@ -21,6 +21,7 @@ namespace Onelemental.Managers
         public void Start()
         {
             GameManager.StageRuleManager = this;
+            PlayerElemental = GameManager.Instance.PlayerElemental;
             
             IsDefeat.Add(Elemental.Fire, false);
             IsDefeat.Add(Elemental.Water, false);

@@ -194,6 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 123566765}
   - component: {fileID: 123566764}
+  - component: {fileID: 123566766}
   m_Layer: 0
   m_Name: StageRule
   m_TagString: Untagged
@@ -214,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerElemental: 1
+  AllNodesInStage: []
 --- !u!4 &123566765
 Transform:
   m_ObjectHideFlags: 0
@@ -229,6 +231,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &123566766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123566763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb4d2ba75c4338409c3118428203641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LinePrefab: {fileID: 6515234099971443985, guid: 220eb0ad89d917e41a38efa82f8b5491, type: 3}
 --- !u!1001 &860796051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -468,7 +483,7 @@ MonoBehaviour:
   _lineRenderer: {fileID: 0}
   _isDragging: 0
   _startNode: {fileID: 0}
-  StageRuleObject: {fileID: 123566763}
+  LinePrefab: {fileID: 0}
 --- !u!120 &1269686405
 LineRenderer:
   serializedVersion: 2

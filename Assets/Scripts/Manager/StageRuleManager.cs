@@ -12,6 +12,7 @@ namespace Onelemental.Managers
         public Elemental PlayerElemental = Elemental.Fire; // 나중에 받아오는 코드로 수정
         public List<Node> AllNodesInStage = new List<Node>();
         public Dictionary <Elemental, bool> IsDefeat = new Dictionary<Elemental, bool>();
+        public Timer gameTimer; // 타이머를 참조하기 위한 변수
 
         private bool _playerWins = false;
         private bool _playerLoses = false;
@@ -84,7 +85,17 @@ namespace Onelemental.Managers
                     Player player = ElementalPlayers[targetElemental];
                     startnode.SetCurrentElemental(targetElemental);
                     player.Initialize(startnode, targetElemental);  
-                } 
+                }
+
+                if (gameTimer != null)
+                {
+                    gameTimer.ResetTimer();
+                    gameTimer.StartTimer();
+                }
+                else
+                {
+                    Debug.LogError("Game Timer is not assigned in the StageRuleManager.");
+                }
             }
         }
 
@@ -148,11 +159,15 @@ namespace Onelemental.Managers
                     return false;
             }
             Debug.Log("win!");
+            if (gameTimer != null)
+                gameTimer.StopTimer();
             return true;
         }
         public void GameOver()
         {
             Debug.Log("Lose");
+            if (gameTimer != null)
+                gameTimer.StopTimer();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Onelemental.Enum;
 using Onelemental.Managers;
+using TMPro;
 
 public class Node : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class Node : MonoBehaviour
 
     public SpriteRenderer NodeRenderer;
 
-    public TextMesh NodeTextMesh;
+    public TextMeshPro NodeTextMesh;
 
     public List<Node> ConnectedNodes = new List<Node>();
 

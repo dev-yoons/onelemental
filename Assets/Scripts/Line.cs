@@ -10,15 +10,28 @@ public class Line : MonoBehaviour
     // Start is called before the first frame update
     public void Init(Node instartNode, Node inendNode)
     {
-        // √Êµπ ∆«¡§ ±∏«ˆ«ÿ¡÷ººø‰.
+        startNode = instartNode;
+        endNode = inendNode;
 
         LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
         lineRenderer.SetPosition(0, instartNode.transform.position);
         lineRenderer.SetPosition(1, inendNode.transform.position);  
 
-        startNode = instartNode; 
-        endNode = inendNode;
+        // BoxCollider2D ÏÑ§Ï†ï.
+        BoxCollider2D boxCollider = gameObject.GetComponent<BoxCollider2D>();
+        if (boxCollider != null)
+        {
+            // LineRendererÏùò Ï§ëÏ†ê ÏúÑÏπò Í≥ÑÏÇ∞.
+            Vector3 startPosition = instartNode.transform.position;
+            Vector3 endPosition = inendNode.transform.position;
+            Vector3 middlePoint = (startPosition + endPosition) / 2;
+            boxCollider.transform.position = middlePoint;
 
+            // ColliderÏùò ÌÅ¨Í∏∞ Î∞è ÌöåÏ†Ñ ÏÑ§Ï†ï.
+            float lineLength = Vector3.Distance(startPosition, endPosition);
+            boxCollider.size = new Vector2(lineLength, lineRenderer.startWidth);
+            boxCollider.transform.rotation = Quaternion.FromToRotation(Vector3.right, endPosition - startPosition);
+        }
     }
 
     // Update is called once per frame

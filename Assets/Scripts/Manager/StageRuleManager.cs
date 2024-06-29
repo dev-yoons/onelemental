@@ -33,7 +33,7 @@ namespace Onelemental.Managers
 
                             ElementalPlayers.Add(startnode.GetCurrentElemental(), playerComp);
 
-                            playerComp.Initialize(startnode); // 초기화
+                            playerComp.Initialize(startnode); // 초기화.
                         }
                     }
                     else
@@ -45,7 +45,7 @@ namespace Onelemental.Managers
 
                             ElementalPlayers.Add(startnode.GetCurrentElemental(), aiPlayerComp);
 
-                            aiPlayerComp.Initialize(startnode); // AIPlayer 초기화
+                            aiPlayerComp.Initialize(startnode); // AIPlayer 초기화.
                         }
                     }
 
@@ -83,6 +83,16 @@ namespace Onelemental.Managers
             winPlayer.AddOwningNode(node);
 
             node.SetCurrentElemental(newElemental);
+        }
+
+        // 소유권 확인.
+        public bool PlayerOwnsNode(Node node)
+        {
+            if (ElementalPlayers.TryGetValue(PlayerElemental, out Player player))
+            {
+                return player.OwnsNode(node);
+            }
+            return false;
         }
     }
 }

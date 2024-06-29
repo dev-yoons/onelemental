@@ -43,8 +43,8 @@ public class DrawLine : MonoBehaviour
             }
             else
             { 
-                Line line = hit.collider?.GetComponent<Line>();
-                if (line != null)
+                Line line = hit.collider.GetComponent<Line>();
+                if (line != null && GameManager.StageRuleManager.PlayerOwnsNode(line.startNode))
                 { 
                     line.startNode.StopSendingAttack(line.endNode.gameObject); 
                     Destroy(line.gameObject);

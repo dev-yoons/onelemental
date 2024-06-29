@@ -21,6 +21,7 @@ namespace Onelemental.Managers
         // Player�� AIPlayer ���� �����Ͽ� ������ �Ҵ��մϴ�.
         public void Start()
         {
+            PlayerElemental = GameManager.Instance.PlayerElemental;
             GameManager.StageRuleManager = this;
             
             IsDefeat.Add(Elemental.Fire, false);
@@ -28,44 +29,59 @@ namespace Onelemental.Managers
             IsDefeat.Add(Elemental.Wind, false);
             IsDefeat.Add(Elemental.Ground, false);
 
+            foreach (Elemental elemental in System.Enum.GetValues(typeof(Elemental)))
+            {
+                if (elemental == Elemental.Neutral)
+                    continue;
+
+                GameObject newPlayer = new GameObject { };
+                Player playerComp;
+                if (PlayerElemental == elemental)
+                    playerComp = newPlayer.AddComponent<Player>();
+                else
+                    playerComp = newPlayer.AddComponent<AIPlayer>();
+                ElementalPlayers.Add(elemental, playerComp);
+            }
+
+            List<Elemental> notInitializedElementals = new List<Elemental>();
+            foreach (Elemental elemental in System.Enum.GetValues(typeof(Elemental)))
+            {
+                if (elemental == Elemental.Neutral)
+                    continue;
+                if (elemental == PlayerElemental)
+                    continue;
+                notInitializedElementals.Add(elemental);
+            } 
+
             Node[] startnodes = Resources.FindObjectsOfTypeAll<Node>();
             foreach (Node startnode in startnodes)
             {
                 AllNodesInStage.Add(startnode);
                 if (startnode.GetCurrentElemental() != Elemental.Neutral) 
-                {
-                    if (startnode.GetCurrentElemental() == PlayerElemental)
-                    {
-                        if (!ElementalPlayers.ContainsKey(PlayerElemental))
-                        {
-                            GameObject newPlayer = new GameObject { };
-                            Player playerComp = newPlayer.AddComponent<Player>();
-
-                            ElementalPlayers.Add(startnode.GetCurrentElemental(), playerComp);
-
-                            playerComp.Initialize(startnode); // 초기화.
-                        }
-                    }
-                    else
-                    {
-                        if (!ElementalPlayers.ContainsKey(startnode.GetCurrentElemental()))
-                        {
-                            GameObject newAIPlayer = new GameObject { };
-                            AIPlayer aiPlayerComp = newAIPlayer.AddComponent<AIPlayer>();
-
-                            ElementalPlayers.Add(startnode.GetCurrentElemental(), aiPlayerComp);
-
-                            aiPlayerComp.Initialize(startnode); // AIPlayer 초기화.
-                        }
-                    }
-
+                { 
                     Player player = ElementalPlayers[startnode.GetCurrentElemental()];
-
-                    if (startnode.IsMainNode)
-                        player.Initialize(startnode);
 
                     player.AddOwningNode(startnode); 
                 }
+
+                if (startnode.IsMainNode)
+                {
+                    Elemental targetElemental;
+
+                    if (startnode.IsPlayerMainNode)
+                    {
+                        targetElemental = PlayerElemental;
+                    }
+                    else
+                    {
+                        targetElemental = notInitializedElementals[UnityEngine.Random.Range(0, notInitializedElementals.Count)];
+                        notInitializedElementals.Remove(targetElemental);
+                    } 
+
+                    Player player = ElementalPlayers[targetElemental];
+                    player.Initialize(startnode, targetElemental);
+                    startnode.SetCurrentElemental(targetElemental);  
+                } 
             }
         }
 

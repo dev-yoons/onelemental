@@ -12,10 +12,10 @@ public class Player : MonoBehaviour
 
     public Elemental Elemental; 
     
-    public void Initialize(Node mainNode)
+    public void Initialize(Node mainNode, Elemental elemental)
     {
         MainNode = mainNode;
-        Elemental = MainNode.GetCurrentElemental();
+        Elemental = elemental;
     }
     public void AddOwningNode(Node newNode)
     {

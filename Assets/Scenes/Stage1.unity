@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: StartElemental
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: CurrentOwningElemental
@@ -643,7 +643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: StartElemental
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: CurrentOwningElemental
@@ -1603,7 +1603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: StartElemental
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: CurrentOwningElemental
@@ -2339,6 +2339,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: StartElemental
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
+      propertyPath: IsPlayerMainNode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}

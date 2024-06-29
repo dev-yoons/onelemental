@@ -25,7 +25,9 @@ public class Node : MonoBehaviour
     private Elemental CurrentElemental = Elemental.Neutral;
     public Elemental GetCurrentElemental() { return CurrentElemental; }
 
-    public bool IsMainNode = false; 
+    public bool IsMainNode = false;
+
+    public bool IsPlayerMainNode = false;
 
     public GameObject worshiperObject;
 
@@ -48,8 +50,8 @@ public class Node : MonoBehaviour
     {
         CurrentWorshipers = StartWorshipers;
         SetCurrentElemental(StartElemental);
-        if (StartElemental == Elemental.Neutral)
-            CurrentWorshipers = 0;
+/*        if (StartElemental == Elemental.Neutral)
+            CurrentWorshipers = 0;*/
         NodeTextMesh.text = CurrentWorshipers.ToString();
         curProductionTime = ProductionTime;
     } 

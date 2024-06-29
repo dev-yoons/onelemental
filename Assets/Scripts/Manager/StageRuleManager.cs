@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ namespace Onelemental.Managers
         public Elemental PlayerElemental = Elemental.Fire; // 나중에 받아오는 코드로 수정
         public List<Node> AllNodesInStage = new List<Node>();
         public Dictionary <Elemental, bool> IsDefeat = new Dictionary<Elemental, bool>();
+
+        private bool _playerWins;
 
 
         // ó���� ���������� ��ġ�Ǿ��ִ� ������ �а�,
@@ -65,6 +68,11 @@ namespace Onelemental.Managers
             }
         }
 
+        public void Update()
+        {
+            _playerWins = PlayerWins();
+        }
+
         // ���� Ŭ�� ������ ������� Ȯ���մϴ�.
         public bool IsClickableNode(Node node)
         {
@@ -99,6 +107,20 @@ namespace Onelemental.Managers
                 return player.OwnsNode(node);
             }
             return false;
+        }
+
+        // 플레이어가 이겼는지 확인하는 함수
+        public bool PlayerWins()
+        {
+            foreach (var variable in IsDefeat)
+            {
+                if (variable.Key != PlayerElemental && variable.Value == false)
+                    return false;
+                if (variable.Key == PlayerElemental && variable.Value == true)
+                    return false;
+            }
+            Debug.Log("win!");
+            return true;
         }
     }
 }

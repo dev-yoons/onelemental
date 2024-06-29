@@ -57,6 +57,9 @@ public class Worshiper : MonoBehaviour
         if (!otherWorshiper)
             return;
 
+        if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
+            return;
+
         if (otherWorshiper._targetNode == _startNode)
         {
             Battle(otherWorshiper); 
@@ -65,6 +68,7 @@ public class Worshiper : MonoBehaviour
 
     private void Battle(Worshiper otherWorshiper)
     {
+
         if (otherWorshiper.GetWorshiperElemental() == EnumStatics.WinningElemental(GetWorshiperElemental()))
         {
             WorshiperPool.Instance.ReturnPooledObject(otherWorshiper.gameObject);

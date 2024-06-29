@@ -15,9 +15,15 @@ public class AIPlayer : Player
     public float AIPatternStartDelayTime = 1.0f;
 
     // 시작 지연 시간 걸고 AI 패턴 시작
+
+    private void Awake()
+    {
+        AIPatternStartDelayTime = Random.Range(1.0f, 3.0f);
+    }
     void Start()
     {
         StartCoroutine(StartAIPattern());
+
     }
 
     private IEnumerator StartAIPattern()

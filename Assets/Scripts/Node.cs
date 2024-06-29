@@ -183,7 +183,8 @@ public class Node : MonoBehaviour
     public void SetCurrentElemental(Elemental newElemental)
     {
         CurrentElemental = newElemental;
-
+        
+        
         NodeRenderer.color = EnumStatics.GetElementalColor(newElemental); 
     }
 

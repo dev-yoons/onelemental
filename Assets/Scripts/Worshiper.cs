@@ -59,8 +59,33 @@ public class Worshiper : MonoBehaviour
 
         if (otherWorshiper._targetNode == _startNode)
         {
-            WorshiperPool.Instance.ReturnPooledObject(gameObject);
-            WorshiperPool.Instance.ReturnPooledObject(gameObject);
+            Battle(otherWorshiper); 
+        }
+    }
+
+    private void Battle(Worshiper otherWorshiper)
+    {
+        if (otherWorshiper.GetWorshiperElemental() == EnumStatics.WinningElemental(GetWorshiperElemental()))
+        {
+            WorshiperPool.Instance.ReturnPooledObject(otherWorshiper.gameObject);
+            if (!StageRuleManager.CheckSurvive())
+            {
+                WorshiperPool.Instance.ReturnPooledObject(this.gameObject);
+            }
+
+        }
+        else if (otherWorshiper.GetWorshiperElemental() == EnumStatics.LosingElemental(GetWorshiperElemental()))
+        {
+            WorshiperPool.Instance.ReturnPooledObject(this.gameObject);
+            if (!StageRuleManager.CheckSurvive())
+            {
+                WorshiperPool.Instance.ReturnPooledObject(otherWorshiper.gameObject);
+            }
+        }
+        else
+        { 
+            WorshiperPool.Instance.ReturnPooledObject(this.gameObject);
+            WorshiperPool.Instance.ReturnPooledObject(otherWorshiper.gameObject);
         }
     }
 

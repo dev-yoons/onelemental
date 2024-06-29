@@ -17,8 +17,15 @@ public class Line : MonoBehaviour
         LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
         lineRenderer.SetPosition(0, instartNode.transform.position);
         lineRenderer.SetPosition(1, inendNode.transform.position);
-        lineRenderer.startColor = EnumStatics.GetElementalColor(instartNode.GetCurrentElemental());
-        lineRenderer.endColor = EnumStatics.GetElementalColor(inendNode.GetCurrentElemental());
+
+        Color startColor = EnumStatics.GetElementalColor(instartNode.GetCurrentElemental());
+        startColor.a = 0.3f;
+        
+        Color endColor = EnumStatics.GetElementalColor(inendNode.GetCurrentElemental());
+        endColor.a = 0.3f;
+
+        lineRenderer.startColor = startColor;
+        lineRenderer.endColor = endColor; 
 
         // BoxCollider2D 설정.
         BoxCollider2D boxCollider = gameObject.GetComponent<BoxCollider2D>();

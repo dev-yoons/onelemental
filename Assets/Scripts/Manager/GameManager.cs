@@ -19,7 +19,7 @@ namespace Onelemental.Managers
 
         public static PrefabManager PrefabManager { get { return Instance.prefabManager; } set { Instance.prefabManager = value; } }
 
-        public Elemental PlayerElemental;
+        public Elemental PlayerElemental = Elemental.Fire;
 
         void Awake()
         { 

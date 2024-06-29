@@ -165,13 +165,20 @@ namespace Onelemental.Managers
             if (gameTimer != null)
                 gameTimer.StopTimer();
             return true;
-        }
+        } 
+
         public void GameOver()
         {
             Debug.Log("Lose");
             gameOver.SetActive(true);
             if (gameTimer != null)
                 gameTimer.StopTimer();
+        }
+
+        const float SurviveRatio = 0.1f;
+        static public bool CheckSurvive()
+        {
+            return UnityEngine.Random.value < SurviveRatio;
         }
     }
 }

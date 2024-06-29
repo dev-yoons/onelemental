@@ -29,6 +29,11 @@ public class LoadSceneManager : MonoBehaviour
         IncrementSceneNumber(currentScene);
     }
 
+    public void GoStage1()
+    {
+        SceneManager.LoadScene("Stage1");
+    }
+
     string IncrementSceneNumber(string sceneName)
     {
         // 정규 표현식으로 숫자 추출

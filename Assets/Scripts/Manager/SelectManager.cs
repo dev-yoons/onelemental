@@ -14,6 +14,8 @@ public class SelectManager : MonoBehaviour
     public Button groundButton;
 
     public static Elemental SelectedElemental;
+
+    public GameObject stageSelectUI;
     
     private void Start()
     {
@@ -29,6 +31,6 @@ public class SelectManager : MonoBehaviour
         GameManager.Instance.PlayerElemental = selectedElement;
         Debug.Log(SelectedElemental.ToString());
         Debug.Log(selectedElement.ToString());
-        SceneManager.LoadScene("Stage1");
+        stageSelectUI.SetActive(true);
     }
 }

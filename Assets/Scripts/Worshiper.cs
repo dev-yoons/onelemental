@@ -60,7 +60,7 @@ public class Worshiper : MonoBehaviour
         if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
             return;
 
-        if (otherWorshiper._targetNode == _startNode)
+        if ((otherWorshiper._targetNode == _startNode) && (otherWorshiper._startNode == _targetNode))
         {
             Battle(otherWorshiper); 
         }

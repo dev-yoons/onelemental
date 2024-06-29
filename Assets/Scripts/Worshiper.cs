@@ -38,12 +38,12 @@ public class Worshiper : MonoBehaviour
 
                 node.GetNewWorshiper(this);
 
-                Destroy(gameObject); // 숭배자 파괴
+                WorshiperPool.Instance.ReturnPooledObject(gameObject); // 숭배자 파괴
             }
             // 원소신 본진 파괴 시
             if (GameManager.StageRuleManager.IsDefeat[_elemental] == true)
             {
-                Destroy(gameObject);
+                WorshiperPool.Instance.ReturnPooledObject(gameObject);
             }
 
         }
@@ -59,8 +59,8 @@ public class Worshiper : MonoBehaviour
 
         if (otherWorshiper._targetNode == _startNode)
         {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
+            WorshiperPool.Instance.ReturnPooledObject(gameObject);
+            WorshiperPool.Instance.ReturnPooledObject(gameObject);
         }
     }
 

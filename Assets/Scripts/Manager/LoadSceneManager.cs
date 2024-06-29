@@ -18,6 +18,11 @@ public class LoadSceneManager : MonoBehaviour
         SceneManager.LoadScene("StartScene"); // StartScene 생성 후 Build Settings에 추가
     }
 
+    public void GoSelectScene()
+    {
+        SceneManager.LoadScene("SelectElementScene");
+    }
+
     public void NextStage()
     {
         string currentScene = SceneManager.GetActiveScene().name;

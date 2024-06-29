@@ -52,6 +52,7 @@ public class Node : MonoBehaviour
     private Dictionary<GameObject, Coroutine> AttackCorroutine = new Dictionary<GameObject, Coroutine>();
     private Dictionary<GameObject, Line> AttackLine = new Dictionary<GameObject, Line>();
 
+    private AudioSource audioSource;
     /// <summary>
     /// 다른 노드로 공격 보내기
     /// </summary>
@@ -66,6 +67,7 @@ public class Node : MonoBehaviour
             CurrentWorshipers = 0;*/
         NodeTextMesh.text = CurrentWorshipers.ToString();
         curProductionTime = ProductionTime;
+        audioSource = GetComponent<AudioSource>();
     } 
 
     public bool IsAttackingTo(GameObject go)
@@ -167,6 +169,8 @@ public class Node : MonoBehaviour
 
             // 숭배자 수 감소 
             DecreaseWorshipers();
+
+            audioSource.Play();
             
             // 잠시 대기 후 반복
             yield return new WaitForSeconds(0.5f); // 필요에 따라 시간 조정

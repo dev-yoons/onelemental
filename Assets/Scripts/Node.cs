@@ -73,7 +73,7 @@ public class Node : MonoBehaviour
         }
         Destroy(AttackLine[destination].gameObject);
         AttackLine.Remove(destination);
-    }
+    } 
 
     private void DecreaseWorshipers()
     {

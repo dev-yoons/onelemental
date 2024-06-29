@@ -39,7 +39,7 @@ public class Line : MonoBehaviour
 
             // Collider의 크기 및 회전 설정.
             float lineLength = Vector3.Distance(startPosition, endPosition);
-            boxCollider.size = new Vector2(lineLength, lineRenderer.startWidth);
+            boxCollider.size = new Vector2(lineLength - 1.0f, lineRenderer.startWidth);
             boxCollider.transform.rotation = Quaternion.FromToRotation(Vector3.right, endPosition - startPosition);
         }
     }

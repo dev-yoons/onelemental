@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public virtual void Initialize(Node mainNode, Elemental elemental)
     {
         MainNode = mainNode;
+        MainNode.IsMainNode = true;
         Elemental = elemental;
         AddOwningNode(mainNode);
     }

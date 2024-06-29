@@ -106,8 +106,18 @@ MonoBehaviour:
   ProductionTime: 3
   StartElemental: 0
   IsMainNode: 0
+  IsPlayerMainNode: 0
   worshiperObject: {fileID: 7963283298764097707, guid: 4de51644797bf42d4b9ae5e45940cd75, type: 3}
   NodeRenderer: {fileID: 5510152769825606854}
+  BaseFire: {fileID: 2850681671163098151, guid: 908492e78c57644ceb981e34e08a25f0, type: 3}
+  BaseWater: {fileID: 3852142380736818054, guid: 1c2c4e3c2fec94f4ba97618a4e02675b, type: 3}
+  BaseWind: {fileID: 7653948143439726890, guid: 419ab5ae6ef6d48fda93034c04627d5a, type: 3}
+  BaseGround: {fileID: -4341860812063300145, guid: c22b6b141641643899959b69bd717f81, type: 3}
+  neutral: {fileID: -137972784495506535, guid: 9ef5ada7b7d984c7a846254830a8aa16, type: 3}
+  fire: {fileID: 8334651344603559088, guid: 28e727d493fc1410eb555e3262938dbc, type: 3}
+  water: {fileID: 8509550459451208454, guid: 87c7befab877a4f77a5a38d0f1fb589c, type: 3}
+  wind: {fileID: 8605956544606621573, guid: a3447756461844de0984f5ae03a99d6e, type: 3}
+  ground: {fileID: -3878557786174838139, guid: f2d10534df520418bac351f67acbc34d, type: 3}
   NodeTextMesh: {fileID: 7237556339319794069}
   ConnectedNodes: []
 --- !u!120 &5421639338329014970

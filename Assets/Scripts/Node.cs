@@ -31,7 +31,19 @@ public class Node : MonoBehaviour
 
     public GameObject worshiperObject;
 
+    // 베이스
     public SpriteRenderer NodeRenderer;
+    public Sprite BaseFire;
+    public Sprite BaseWater;
+    public Sprite BaseWind;
+    public Sprite BaseGround;
+    
+    // 거점
+    public Sprite neutral;
+    public Sprite fire;
+    public Sprite water;
+    public Sprite wind;
+    public Sprite ground;
 
     public TextMeshPro NodeTextMesh;
 
@@ -183,9 +195,46 @@ public class Node : MonoBehaviour
     public void SetCurrentElemental(Elemental newElemental)
     {
         CurrentElemental = newElemental;
-        
-        
-        NodeRenderer.color = EnumStatics.GetElementalColor(newElemental); 
+
+        if (IsMainNode)
+        {
+            switch (CurrentElemental)
+            {
+                case Elemental.Fire :
+                    NodeRenderer.sprite = BaseFire;
+                    break;
+                case Elemental.Water :
+                    NodeRenderer.sprite = BaseWater;
+                    break;
+                case Elemental.Wind :
+                    NodeRenderer.sprite = BaseWind;
+                    break;
+                case Elemental.Ground :
+                    NodeRenderer.sprite = BaseGround;
+                    break;
+            }
+        }
+        else
+        {
+            switch (CurrentElemental)
+            {
+                case Elemental.Fire :
+                    NodeRenderer.sprite = fire;
+                    break;
+                case Elemental.Water :
+                    NodeRenderer.sprite = water;
+                    break;
+                case Elemental.Wind :
+                    NodeRenderer.sprite = wind;
+                    break;
+                case Elemental.Ground :
+                    NodeRenderer.sprite = ground;
+                    break;
+                case Elemental.Neutral :
+                    NodeRenderer.sprite = neutral;
+                    break;
+            }
+        }
     }
 
     // node가 ConncectedNodes 리스트에 있는지 확인.

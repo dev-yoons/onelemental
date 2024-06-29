@@ -266,6 +266,8 @@ MonoBehaviour:
   PlayerElemental: 1
   AllNodesInStage: []
   gameTimer: {fileID: 1785431310}
+  gameOver: {fileID: 1201770170}
+  gameClear: {fileID: 1958986645}
 --- !u!4 &123566765
 Transform:
   m_ObjectHideFlags: 0

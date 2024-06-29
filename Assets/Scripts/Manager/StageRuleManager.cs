@@ -17,6 +17,8 @@ namespace Onelemental.Managers
         private bool _playerWins = false;
         private bool _playerLoses = false;
 
+        public GameObject gameOver;
+        public GameObject gameClear;
 
         // ó���� ���������� ��ġ�Ǿ��ִ� ������ �а�,
         // Player�� AIPlayer ���� �����Ͽ� ������ �Ҵ��մϴ�.
@@ -158,6 +160,7 @@ namespace Onelemental.Managers
                 if (variable.Key == PlayerElemental && variable.Value == true)
                     return false;
             }
+            gameClear.SetActive(true);
             Debug.Log("win!");
             if (gameTimer != null)
                 gameTimer.StopTimer();
@@ -166,6 +169,7 @@ namespace Onelemental.Managers
         public void GameOver()
         {
             Debug.Log("Lose");
+            gameOver.SetActive(true);
             if (gameTimer != null)
                 gameTimer.StopTimer();
         }

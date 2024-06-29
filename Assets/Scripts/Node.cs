@@ -55,7 +55,8 @@ public class Node : MonoBehaviour
     private Dictionary<GameObject, Coroutine> AttackCorroutine = new Dictionary<GameObject, Coroutine>();
     private Dictionary<GameObject, Line> AttackLine = new Dictionary<GameObject, Line>();
 
-    private AudioSource audioSource;
+    public AudioSource shootAudio;
+    public AudioSource successAudio;
     /// <summary>
     /// 다른 노드로 공격 보내기
     /// </summary>
@@ -69,8 +70,7 @@ public class Node : MonoBehaviour
 /*        if (StartElemental == Elemental.Neutral)
             CurrentWorshipers = 0;*/
         NodeTextMesh.text = CurrentWorshipers.ToString();
-        curProductionTime = ProductionTime;
-        audioSource = GetComponent<AudioSource>();
+        curProductionTime = ProductionTime; 
     } 
 
     public bool IsAttackingTo(GameObject go)
@@ -149,6 +149,11 @@ public class Node : MonoBehaviour
         CurrentWorshipers = 10;
 
         GameManager.StageRuleManager.NodeOwnerChanged(this, newWorshiper.GetWorshiperElemental()); 
+
+        if (GetCurrentElemental() == GameManager.StageRuleManager.PlayerElemental)
+        {
+            successAudio.Play();
+        }
     }
 
     private IEnumerator SendWorshipers(GameObject destination)
@@ -173,7 +178,7 @@ public class Node : MonoBehaviour
             // 숭배자 수 감소 
             DecreaseWorshipers();
 
-            audioSource.Play();
+            shootAudio.Play();
             
             // 잠시 대기 후 반복
             yield return new WaitForSeconds(0.5f); // 필요에 따라 시간 조정

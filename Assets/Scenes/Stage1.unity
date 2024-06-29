@@ -2056,6 +2056,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -276983073596676847, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: GodSprite
       value: 

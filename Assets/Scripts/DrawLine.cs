@@ -7,7 +7,9 @@ public class DrawLine : MonoBehaviour
 {
     public LineRenderer _lineRenderer;
     public bool _isDragging = false;
-    public Node _startNode; 
+    public Node _startNode;
+
+    public GameObject LinePrefab; 
 
     void Start()
     {
@@ -67,7 +69,7 @@ public class DrawLine : MonoBehaviour
             Node endNode = hit.collider?.GetComponent<Node>();
             if (endNode != null && endNode != _startNode)
             {
-                GameObject lineObject = Instantiate(GameManager.PrefabManager.LinePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                GameObject lineObject = Instantiate(LinePrefab, new Vector3(0, 0, 0), Quaternion.identity);
 
                 lineObject.GetComponent<Line>().Init(_startNode, endNode); 
 

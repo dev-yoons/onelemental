@@ -135,22 +135,6 @@ PrefabInstance:
       propertyPath: CurrentOwningElemental
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-      propertyPath: ConnectedNodes.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-      propertyPath: 'ConnectedNodes.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1514585360}
-    - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-      propertyPath: 'ConnectedNodes.Array.data[1]'
-      value: 
-      objectReference: {fileID: 860796052}
-    - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-      propertyPath: 'ConnectedNodes.Array.data[2]'
-      value: 
-      objectReference: {fileID: 1131077558}
     - target: {fileID: 348208763825438425, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: m_Name
       value: Node (1)
@@ -200,17 +184,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
---- !u!114 &52522103 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-  m_PrefabInstance: {fileID: 52522102}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eebff6e58e247208b1e9a4def45562f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &123566763
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +194,6 @@ GameObject:
   m_Component:
   - component: {fileID: 123566765}
   - component: {fileID: 123566764}
-  - component: {fileID: 123566766}
   m_Layer: 0
   m_Name: StageRule
   m_TagString: Untagged
@@ -242,7 +214,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerElemental: 1
-  AllNodesInStage: []
 --- !u!4 &123566765
 Transform:
   m_ObjectHideFlags: 0
@@ -258,19 +229,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &123566766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 123566763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfb4d2ba75c4338409c3118428203641, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LinePrefab: {fileID: 6515234099971443985, guid: 220eb0ad89d917e41a38efa82f8b5491, type: 3}
 --- !u!1001 &860796051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -287,22 +245,6 @@ PrefabInstance:
       propertyPath: CurrentOwningElemental
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-      propertyPath: ConnectedNodes.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-      propertyPath: 'ConnectedNodes.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1514585360}
-    - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-      propertyPath: 'ConnectedNodes.Array.data[1]'
-      value: 
-      objectReference: {fileID: 52522103}
-    - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-      propertyPath: 'ConnectedNodes.Array.data[2]'
-      value: 
-      objectReference: {fileID: 1131077558}
     - target: {fileID: 348208763825438425, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: m_Name
       value: Node (2)
@@ -352,17 +294,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
---- !u!114 &860796052 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-  m_PrefabInstance: {fileID: 860796051}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eebff6e58e247208b1e9a4def45562f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1104304886
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,22 +378,6 @@ PrefabInstance:
       propertyPath: CurrentOwningElemental
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-      propertyPath: ConnectedNodes.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-      propertyPath: 'ConnectedNodes.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1514585360}
-    - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-      propertyPath: 'ConnectedNodes.Array.data[1]'
-      value: 
-      objectReference: {fileID: 52522103}
-    - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-      propertyPath: 'ConnectedNodes.Array.data[2]'
-      value: 
-      objectReference: {fileID: 860796052}
     - target: {fileID: 348208763825438425, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: m_Name
       value: Node (3)
@@ -520,17 +435,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
---- !u!114 &1131077558 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-  m_PrefabInstance: {fileID: 1131077557}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eebff6e58e247208b1e9a4def45562f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1269686403
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,6 +468,7 @@ MonoBehaviour:
   _lineRenderer: {fileID: 0}
   _isDragging: 0
   _startNode: {fileID: 0}
+  StageRuleObject: {fileID: 123566763}
 --- !u!120 &1269686405
 LineRenderer:
   serializedVersion: 2
@@ -701,22 +606,6 @@ PrefabInstance:
       propertyPath: CurrentOwningElemental
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-      propertyPath: ConnectedNodes.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-      propertyPath: 'ConnectedNodes.Array.data[0]'
-      value: 
-      objectReference: {fileID: 52522103}
-    - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-      propertyPath: 'ConnectedNodes.Array.data[1]'
-      value: 
-      objectReference: {fileID: 860796052}
-    - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-      propertyPath: 'ConnectedNodes.Array.data[2]'
-      value: 
-      objectReference: {fileID: 1131077558}
     - target: {fileID: 348208763825438425, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: m_Name
       value: Node
@@ -766,17 +655,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
---- !u!114 &1514585360 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
-  m_PrefabInstance: {fileID: 1514585359}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eebff6e58e247208b1e9a4def45562f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2104183981
 GameObject:
   m_ObjectHideFlags: 0

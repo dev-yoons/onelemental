@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
         {
             OwningNodes[i].SetCurrentElemental(Elemental.Neutral);
             OwningNodes[i].CurrentWorshipers = 0;
+            OwningNodes[i].NodeTextMesh.text = OwningNodes[i].CurrentWorshipers.ToString();
             OwningNodes.Remove(OwningNodes[i]);
         }
         

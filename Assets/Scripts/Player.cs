@@ -50,10 +50,10 @@ public class Player : MonoBehaviour
             OwningNodes[i].SendingEnd();
             OwningNodes.Remove(OwningNodes[i]);
         }
-        
+        MainNode.GodSprite.GetComponent<GodImageSpawner>().GodDead(); 
         MainNode.IsMainNode = false;
         GameManager.StageRuleManager.IsDefeat[Elemental] = true;
-        Debug.Log("Defeat");
+        Debug.Log("Defeat"); 
         // 플레이어 화면에서 사라짐
         Destroy(this.gameObject);
     }

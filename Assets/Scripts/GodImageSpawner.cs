@@ -7,32 +7,18 @@ using Onelemental.Managers;
 public class GodImageSpawner : MonoBehaviour
 {
 
-    public GameObject FireGodPrefab;
-    public GameObject WaterGodPrefab;
-    public GameObject WindGodPrefab;
-    public GameObject GroundGodPrefab;
+    public GameObject GodPrefab;
+
+    private GameObject godObject;
 
     public void SetGod(Elemental godElemental)
+    { 
+        godObject = Instantiate(GodPrefab, gameObject.transform.position, Quaternion.identity);
+        godObject.GetComponent<GodImage>().SetElemental(godElemental);
+    }
+    
+    public void GodDead()
     {
-        GameObject godPrefab;
-        switch (godElemental)
-        {
-            case Elemental.Fire:
-                godPrefab = FireGodPrefab;
-                break;
-            case Elemental.Water:
-                godPrefab = WaterGodPrefab;
-                break;
-            case Elemental.Wind:
-                godPrefab = WindGodPrefab;
-                break;
-            case Elemental.Ground:
-                godPrefab = GroundGodPrefab;
-                break;
-            default:
-                godPrefab = FireGodPrefab; ;
-                break;
-        }
-        GameObject godObject = Instantiate(godPrefab, gameObject.transform.position, Quaternion.identity); 
+        godObject.GetComponent<GodImage>().GodDead();
     }
 }

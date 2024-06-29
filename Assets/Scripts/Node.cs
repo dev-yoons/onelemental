@@ -53,6 +53,7 @@ public class Node : MonoBehaviour
         curProductionTime = ProductionTime;
     } 
 
+    // 여기서 Line 정보 저장하고 있어요.
     public void SendAttack(GameObject destination, Line attackLine)
     {
         if (AttackCorroutine.ContainsKey(destination))

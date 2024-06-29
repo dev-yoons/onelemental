@@ -12,10 +12,11 @@ public class Player : MonoBehaviour
 
     public Elemental Elemental; 
     
-    public void Initialize(Node mainNode, Elemental elemental)
+    public virtual void Initialize(Node mainNode, Elemental elemental)
     {
         MainNode = mainNode;
         Elemental = elemental;
+        AddOwningNode(mainNode);
     }
     public void AddOwningNode(Node newNode)
     {

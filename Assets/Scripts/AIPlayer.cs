@@ -23,9 +23,7 @@ public class AIPlayer : Player
         AIPatternStartDelayTime = Random.Range(1.0f, 3.0f);
     }
     void Start()
-    {
-        StartCoroutine(StartAIPattern());
-
+    {  
     }
 
     private IEnumerator StartAIPattern()
@@ -119,5 +117,12 @@ public class AIPlayer : Player
         }
         
         base.Defeat();
+    }
+
+    public override void Initialize(Node mainNode, Elemental elemental)
+    {
+        base.Initialize(mainNode, elemental);
+        StartCoroutine(StartAIPattern());
+        Debug.Log("Hi");
     }
 }

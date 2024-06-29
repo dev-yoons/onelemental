@@ -57,6 +57,7 @@ namespace Onelemental.Managers
             foreach (Node startnode in startnodes)
             {
                 AllNodesInStage.Add(startnode);
+
                 if (startnode.GetCurrentElemental() != Elemental.Neutral) 
                 { 
                     Player player = ElementalPlayers[startnode.GetCurrentElemental()];
@@ -73,14 +74,16 @@ namespace Onelemental.Managers
                         targetElemental = PlayerElemental;
                     }
                     else
-                    {
+                    { 
                         targetElemental = notInitializedElementals[UnityEngine.Random.Range(0, notInitializedElementals.Count)];
+
+                        Debug.Log(targetElemental);
                         notInitializedElementals.Remove(targetElemental);
                     } 
 
                     Player player = ElementalPlayers[targetElemental];
-                    player.Initialize(startnode, targetElemental);
-                    startnode.SetCurrentElemental(targetElemental);  
+                    startnode.SetCurrentElemental(targetElemental);
+                    player.Initialize(startnode, targetElemental);  
                 } 
             }
         }

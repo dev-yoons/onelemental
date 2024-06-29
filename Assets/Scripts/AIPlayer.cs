@@ -58,20 +58,20 @@ public class AIPlayer : Player
         }
 
         // 연결된 거점지 중 중립지가 있는가
-        bool bFlag = false;
+        List<Node> neutralNodes = new List<Node>();
         GameObject lineObject;
         foreach (Node connectednode in ainode.ConnectedNodes)
         {
             if (connectednode.GetCurrentElemental() == Elemental.Neutral)
             {
-                bFlag = true;
-                targetNode = connectednode;
-                break;
+                neutralNodes.Add(connectednode);
             }
         }
-        // 있다면 대상거점지로 이동
-        if (bFlag)
+
+        // 중립 노드가 있다면 대상 거점지로 이동
+        if (neutralNodes.Count > 0)
         {
+            targetNode = neutralNodes[Random.Range(0, neutralNodes.Count)];
             lineObject = Instantiate(GameManager.PrefabManager.LinePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             lineObject.GetComponent<Line>().Init(ainode, targetNode);
             ainode.SendAttack(targetNode.gameObject, lineObject.GetComponent<Line>());

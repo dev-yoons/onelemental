@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- 
-public class Line : MonoBehaviour
-{
-    // 공격 시작할 때 그어지는 줄 클래스입니다.
 
+public class Line : MonoBehaviour
+{  
     public Node startNode;
     public Node endNode;
 
@@ -21,5 +19,11 @@ public class Line : MonoBehaviour
         startNode = instartNode; 
         endNode = inendNode;
 
-    } 
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }

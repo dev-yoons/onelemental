@@ -79,16 +79,22 @@ public class AIPlayer : Player
         }
 
         // 없다면
-        // 거점지에 연결된 다른 거점지 중 거점지의 숭배지보다 10개 이상 적은 거점지의 개수
+        // 거점지에 연결된 다른 거점지 중 거점지의 숭배지보다 10개 이상 적은 거점지의 개수 
         List<Node> targetableNodes = new List<Node>();
+        bool bIsInDanger = false;
         foreach (Node connectednode in ainode.ConnectedNodes)
         {
             if (connectednode.GetCurrentElemental() != Elemental.Neutral)
             {
                 if (connectednode.CurrentWorshipers + AttackWorshiperCriterion < ainode.CurrentWorshipers)
                 {
-                    targetableNodes.Add(connectednode);
-
+                    if (connectednode.GetCurrentElemental() == Elemental)
+                    {
+                        bIsInDanger = true;
+                        targetNode = connectednode;
+                        break;
+                    }
+                    targetableNodes.Add(connectednode); 
                 }
             }
         }
@@ -99,7 +105,10 @@ public class AIPlayer : Player
             return;
         }
 
-        targetNode = targetableNodes[Random.Range(0, targetableNodes.Count)];
+        if (!bIsInDanger)
+        { 
+            targetNode = targetableNodes[Random.Range(0, targetableNodes.Count)]; 
+        } 
         lineObject = Instantiate(GameManager.PrefabManager.LinePrefab, new Vector3(0, 0, 0), Quaternion.identity);
         lineObject.GetComponent<Line>().Init(ainode, targetNode);
         ainode.SendAttack(targetNode.gameObject, lineObject.GetComponent<Line>());

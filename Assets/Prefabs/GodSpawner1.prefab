@@ -44,7 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24fadd799b791a747aee95352dea5df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GodSymbol: {fileID: 0}
   FireGodPrefab: {fileID: 6585229158572693755, guid: 0c81ea9217ddac741bc1d8971812e98b, type: 3}
   WaterGodPrefab: {fileID: 341394772126635414, guid: c7613f4f7e5376347b12f4aaad2db601, type: 3}
   WindGodPrefab: {fileID: 177493966459752005, guid: 4c1a231568b101d43ac8dfb0223fbf9e, type: 3}
   GroundGodPrefab: {fileID: 6585229158572693755, guid: 0c81ea9217ddac741bc1d8971812e98b, type: 3}
+  FireGodSymbol: {fileID: -3958362854291351659, guid: 54cd32e52713f452d9f96426cde919db, type: 3}
+  WaterGodSymbol: {fileID: -2008148187349906278, guid: 711a03fbad58f4f5faf936592d8c9c14, type: 3}
+  WindGodSymbol: {fileID: 4297545577181785255, guid: 3a2585d75b2d74dcda18f75aee776eb6, type: 3}
+  GroundGodSymbol: {fileID: 719006308181452652, guid: 3735c483e7bef443cbb59c5cb3692ac4, type: 3}

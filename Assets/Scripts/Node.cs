@@ -43,7 +43,7 @@ public class Node : MonoBehaviour
     /// <param name="destination"></param>
     /// 
 
-    void Start()
+    void Awake()
     {
         CurrentWorshipers = StartWorshipers;
         SetCurrentElemental(StartElemental);

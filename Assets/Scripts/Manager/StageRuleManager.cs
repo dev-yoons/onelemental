@@ -12,8 +12,8 @@ namespace Onelemental.Managers
         public List<Node> AllNodesInStage = new List<Node>();
 
 
-        // Ã³À½¿¡ ½ºÅ×ÀÌÁö¿¡ ¹èÄ¡µÇ¾îÀÖ´Â ³ëµåµéÀ» ÀÐ°í,
-        // Player¿Í AIPlayer µéÀ» »ý¼ºÇÏ¿© ³ëµåµéÀ» ÇÒ´çÇÕ´Ï´Ù.
+        // Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ç¾ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð°ï¿½,
+        // Playerï¿½ï¿½ AIPlayer ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò´ï¿½ï¿½Õ´Ï´ï¿½.
         public void Start()
         {
             GameManager.StageRuleManager = this;
@@ -22,7 +22,6 @@ namespace Onelemental.Managers
             foreach (Node startnode in startnodes)
             {
                 AllNodesInStage.Add(startnode);
-
                 if (startnode.GetCurrentElemental() != Elemental.Neutral) 
                 {
                     if (startnode.GetCurrentElemental() == PlayerElemental)
@@ -33,6 +32,8 @@ namespace Onelemental.Managers
                             Player playerComp = newPlayer.AddComponent<Player>();
 
                             ElementalPlayers.Add(startnode.GetCurrentElemental(), playerComp);
+
+                            playerComp.Initialize(startnode); // ì´ˆê¸°í™”
                         }
                     }
                     else
@@ -43,6 +44,8 @@ namespace Onelemental.Managers
                             AIPlayer aiPlayerComp = newAIPlayer.AddComponent<AIPlayer>();
 
                             ElementalPlayers.Add(startnode.GetCurrentElemental(), aiPlayerComp);
+
+                            aiPlayerComp.Initialize(startnode); // AIPlayer ì´ˆê¸°í™”
                         }
                     }
 
@@ -56,7 +59,7 @@ namespace Onelemental.Managers
             }
         }
 
-        // ÇöÀç Å¬¸¯ °¡´ÉÇÑ ³ëµåÀÎÁö È®ÀÎÇÕ´Ï´Ù.
+        // ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
         public bool IsClickableNode(Node node)
         {
             if (PlayerElemental != node.GetCurrentElemental())
@@ -68,7 +71,7 @@ namespace Onelemental.Managers
             return true;
         }
 
-        // ³ëµåÀÇ ÁÖÀÎÀÌ ¹Ù²î¾úÀ» ¶§ È£ÃâµË´Ï´Ù.
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½Ë´Ï´ï¿½.
         public void NodeOwnerChanged(Node node, Elemental newElemental)
         {
             if (node.GetCurrentElemental() != Elemental.Neutral)

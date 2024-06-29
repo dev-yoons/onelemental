@@ -14,7 +14,7 @@ public class AIPlayer : Player
 
     public float AIPatternStartDelayTime = 1.0f;
 
-    // ½ÃÀÛ Áö¿¬ ½Ã°£ °É°í AI ÆÐÅÏ ½ÃÀÛ
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½É°ï¿½ AI ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     void Start()
     {
         StartCoroutine(StartAIPattern());
@@ -27,7 +27,7 @@ public class AIPlayer : Player
         aiCoroutine = StartCoroutine(PlayAIBehavior());
     }
 
-    // AI ÆÐÅÏ
+    // AI ï¿½ï¿½ï¿½ï¿½
     private IEnumerator PlayAIBehavior()
     {
         while (!bIsDefeated)
@@ -45,13 +45,13 @@ public class AIPlayer : Player
     {
         Node targetNode = null;
 
-        // °ÅÁ¡ÀÇ ¼þ¹èÀÚ ¼ö°¡ 10¸í ÀÌ»óÀÎ°¡
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 10ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½Î°ï¿½
         if (ainode.CurrentWorshipers <= Node.LeastWorshipers)
         {
             return;
         }
 
-        // ¿¬°áµÈ °ÅÁ¡Áö Áß Áß¸³Áö°¡ ÀÖ´Â°¡
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Â°ï¿½
         bool bFlag = false;
         GameObject lineObject;
         foreach (Node connectednode in ainode.ConnectedNodes)
@@ -63,7 +63,7 @@ public class AIPlayer : Player
                 break;
             }
         }
-        // ÀÖ´Ù¸é ´ë»ó°ÅÁ¡Áö·Î ÀÌµ¿
+        // ï¿½Ö´Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         if (bFlag)
         {
             lineObject = Instantiate(GameManager.PrefabManager.LinePrefab, new Vector3(0, 0, 0), Quaternion.identity);
@@ -72,8 +72,8 @@ public class AIPlayer : Player
             return;
         }
 
-        // ¾ø´Ù¸é
-        // °ÅÁ¡Áö¿¡ ¿¬°áµÈ ´Ù¸¥ °ÅÁ¡Áö Áß °ÅÁ¡ÁöÀÇ ¼þ¹èÁöº¸´Ù 10°³ ÀÌ»ó ÀûÀº °ÅÁ¡ÁöÀÇ °³¼ö
+        // ï¿½ï¿½ï¿½Ù¸ï¿½
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 10ï¿½ï¿½ ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         List<Node> targetableNodes = new List<Node>();
         foreach (Node connectednode in ainode.ConnectedNodes)
         {
@@ -82,6 +82,7 @@ public class AIPlayer : Player
                 if (connectednode.CurrentWorshipers + 10 < ainode.CurrentWorshipers)
                 {
                     targetableNodes.Add(connectednode);
+
                 }
             }
         }

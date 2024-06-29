@@ -113,7 +113,17 @@ public class Node : MonoBehaviour
         while (CurrentWorshipers > LeastWorshipers)
         {
             // 숭배자 생성 및 초기화
-            GameObject worshiper = Instantiate(worshiperObject, transform.position, Quaternion.identity);
+            GameObject worshiper = WorshiperPool.Instance.GetPooledObject();
+            
+            if (worshiper == null)
+            {
+                yield return new WaitForSeconds(0.5f); // 시간 수정 가능
+                continue;
+            }
+            
+            worshiper.transform.position = transform.position;
+            worshiper.SetActive(true);
+            
             Worshiper worshiperComponent = worshiper.GetComponent<Worshiper>();
             worshiperComponent.Initialize(gameObject, destination, WorshiperSpeed);
 
@@ -123,6 +133,7 @@ public class Node : MonoBehaviour
             // 잠시 대기 후 반복
             yield return new WaitForSeconds(0.5f); // 필요에 따라 시간 조정
         }
+        
         if (CurrentWorshipers <= LeastWorshipers)
         {
             SendingEnd();

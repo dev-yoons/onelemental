@@ -162,7 +162,10 @@ public class Node : MonoBehaviour
                 break;
             case Elemental.Ground:
                 NodeRenderer.color = Color.yellow;
-                break; 
+                break;
+            case Elemental.Neutral:
+                NodeRenderer.color = Color.white;
+                break;
         } 
     } 
 

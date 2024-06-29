@@ -14,6 +14,7 @@ namespace Onelemental.Managers
         public Dictionary <Elemental, bool> IsDefeat = new Dictionary<Elemental, bool>();
 
         private bool _playerWins = false;
+        private bool _playerLoses = false;
 
 
         // ó���� ���������� ��ġ�Ǿ��ִ� ������ �а�,
@@ -70,8 +71,15 @@ namespace Onelemental.Managers
 
         public void Update()
         {
+            if (IsDefeat[PlayerElemental] && !_playerLoses)
+            {
+                GameOver();
+                _playerLoses = true;
+            }
             if(!_playerWins)
+            {
                 _playerWins = PlayerWins();
+            }
         }
 
         // ���� Ŭ�� ������ ������� Ȯ���մϴ�.
@@ -122,6 +130,10 @@ namespace Onelemental.Managers
             }
             Debug.Log("win!");
             return true;
+        }
+        public void GameOver()
+        {
+            Debug.Log("Lose");
         }
     }
 }

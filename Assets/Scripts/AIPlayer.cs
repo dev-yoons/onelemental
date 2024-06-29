@@ -14,6 +14,8 @@ public class AIPlayer : Player
 
     public float AIPatternStartDelayTime = 1.0f;
 
+    public int AttackWorshiperCriterion = 5;
+
     // 시작 지연 시간 걸고 AI 패턴 시작
 
     private void Awake()
@@ -85,7 +87,7 @@ public class AIPlayer : Player
         {
             if (connectednode.GetCurrentElemental() != Elemental.Neutral)
             {
-                if (connectednode.CurrentWorshipers + 10 < ainode.CurrentWorshipers)
+                if (connectednode.CurrentWorshipers + AttackWorshiperCriterion < ainode.CurrentWorshipers)
                 {
                     targetableNodes.Add(connectednode);
 

@@ -168,7 +168,13 @@ public class Node : MonoBehaviour
                 NodeRenderer.color = Color.white;
                 break;
         } 
-    } 
+    }
+
+    // node가 ConncectedNodes 리스트에 있는지 확인.
+    public bool IsConnectedToNode(Node node)
+    {
+        return ConnectedNodes.Contains(node);
+    }
 
     private void Update()
     {
@@ -183,5 +189,5 @@ public class Node : MonoBehaviour
             }
 
         } 
-    } 
+    }
 }

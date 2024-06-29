@@ -67,7 +67,7 @@ public class DrawLine : MonoBehaviour
 
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             Node endNode = hit.collider?.GetComponent<Node>();
-            if (endNode != null && endNode != _startNode)
+            if (endNode != null && endNode != _startNode && _startNode.IsConnectedToNode(endNode))
             {
                 GameObject lineObject = Instantiate(GameManager.PrefabManager.LinePrefab, new Vector3(0, 0, 0), Quaternion.identity);
 

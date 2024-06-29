@@ -57,6 +57,7 @@ public class Node : MonoBehaviour
 
     public AudioSource shootAudio;
     public AudioSource successAudio;
+    public AudioSource failureAudio;
     /// <summary>
     /// 다른 노드로 공격 보내기
     /// </summary>
@@ -147,6 +148,11 @@ public class Node : MonoBehaviour
     private void NodeOwnerChanged(Worshiper newWorshiper)
     {
         CurrentWorshipers = 10;
+
+        if (GetCurrentElemental() == GameManager.StageRuleManager.PlayerElemental)
+        {
+            failureAudio.Play();
+        }
 
         GameManager.StageRuleManager.NodeOwnerChanged(this, newWorshiper.GetWorshiperElemental()); 
 

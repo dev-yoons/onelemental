@@ -1720,11 +1720,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6135166840898861959, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.18
+      value: 3.16
       objectReference: {fileID: 0}
     - target: {fileID: 6135166840898861959, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.38
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6135166840898861959, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2233,11 +2233,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6135166840898861959, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.28
+      value: 3.157
       objectReference: {fileID: 0}
     - target: {fileID: 6135166840898861959, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.28
+      value: 1.261
       objectReference: {fileID: 0}
     - target: {fileID: 6135166840898861959, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2697,7 +2697,7 @@ GameObject:
   - component: {fileID: 2032564645}
   - component: {fileID: 2032564644}
   m_Layer: 0
-  m_Name: stage1_map_0
+  m_Name: stage2_map_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2746,7 +2746,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -2264949138919466124, guid: a7eda370ff6ec440b846402114383de4, type: 3}
+  m_Sprite: {fileID: 7589728878512689281, guid: 364e291196b8f48a098361fef3fa3266, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

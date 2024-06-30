@@ -41,31 +41,31 @@ public class StageBlocker : MonoBehaviour
     {
         switch(i)
         {
-            case 2:
+            case 1:
                 Stage2Blocker.SetActive(false);
                 return;
-            case 3:
+            case 2:
                 Stage3Blocker.SetActive(false);
                 return;
-            case 4:
+            case 3:
                 Stage4Blocker.SetActive(false);
                 return;
-            case 5:
+            case 4:
                 Stage5Blocker.SetActive(false);
                 return;
-            case 6:
+            case 5:
                 Stage6Blocker.SetActive(false);
                 return;
-            case 7:
+            case 6:
                 Stage7Blocker.SetActive(false);
                 return;
-            case 8:
+            case 7:
                 Stage8Blocker.SetActive(false);
                 return;
-            case 9:
+            case 8:
                 Stage9Blocker.SetActive(false);
                 return;
-            case 10:
+            case 9:
                 Stage10Blocker.SetActive(false);
                 return;
         }

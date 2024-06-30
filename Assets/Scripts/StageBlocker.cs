@@ -29,6 +29,10 @@ public class StageBlocker : MonoBehaviour
             {
                 OpenBlocker(i);
             }
+            for (int i = currentStage; i < 10; i++)
+            {
+                CloseBlocker(i);
+            }
         }
         else
         {
@@ -67,6 +71,40 @@ public class StageBlocker : MonoBehaviour
                 return;
             case 9:
                 Stage10Blocker.SetActive(false);
+                return;
+        }
+    }
+
+    private void CloseBlocker(int i)
+    {
+        switch (i)
+        {
+            case 1:
+                Stage2Blocker.SetActive(true);
+                return;
+            case 2:
+                Stage3Blocker.SetActive(true);
+                return;
+            case 3:
+                Stage4Blocker.SetActive(true);
+                return;
+            case 4:
+                Stage5Blocker.SetActive(true);
+                return;
+            case 5:
+                Stage6Blocker.SetActive(true);
+                return;
+            case 6:
+                Stage7Blocker.SetActive(true);
+                return;
+            case 7:
+                Stage8Blocker.SetActive(true);
+                return;
+            case 8:
+                Stage9Blocker.SetActive(true);
+                return;
+            case 9:
+                Stage10Blocker.SetActive(true);
                 return;
         }
     }

@@ -52,6 +52,8 @@ public class Node : MonoBehaviour
 
     public GameObject WaterEffect;
 
+    public GameObject GroundEffect;
+
     public TextMeshPro NodeTextMesh;
 
     public List<Node> ConnectedNodes = new List<Node>();
@@ -129,10 +131,8 @@ public class Node : MonoBehaviour
             {
                 if (UnityEngine.Random.value < EnumStatics.FireDoubleAttackRatio)
                 {
-                    damage += EnumStatics.FireAttackAdditionalDamage;
-                    Vector3 effectPosition = gameObject.transform.position;
-                    effectPosition.z += 3;
-                    Instantiate(GameManager.PrefabManager.FireEffectPrefab, effectPosition, Quaternion.identity);
+                    damage += EnumStatics.FireAttackAdditionalDamage; 
+                    Instantiate(GameManager.PrefabManager.FireEffectPrefab, gameObject.transform.position, Quaternion.identity);
                 }
             }   
             
@@ -141,6 +141,7 @@ public class Node : MonoBehaviour
                 if (UnityEngine.Random.value < EnumStatics.GroundProtectRatio)
                 {
                     damage = 0;
+                    Instantiate(GroundEffect, gameObject.transform.position, Quaternion.identity);
                 }
             }
 

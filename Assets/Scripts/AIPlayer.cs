@@ -20,7 +20,7 @@ public class AIPlayer : Player
 
     private void Awake()
     {
-        AIPatternStartDelayTime = Random.Range(1.0f, 3.0f);
+        AIPatternStartDelayTime = Random.Range(2.0f, 5.0f);
     }
     void Start()
     {  

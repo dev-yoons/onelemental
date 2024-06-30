@@ -2917,7 +2917,7 @@ PrefabInstance:
       objectReference: {fileID: 1019707587}
     - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: ProductionTime
-      value: 2.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 252654389239245147, guid: 4e20fefe0d564f34b947c1ad6fa4f63f, type: 3}
       propertyPath: StartElemental

@@ -19,8 +19,11 @@ public class Worshiper : MonoBehaviour
     public Sprite windWorshiper;
     public Sprite groundWorshiper;
 
+    public GameObject WindEffect;
+
     public void Initialize(GameObject start, GameObject target, float moveSpeed)
     {
+        WindEffect.SetActive(false);
         _startNode = start;
         _targetNode = target; 
         _speed = moveSpeed;
@@ -116,6 +119,11 @@ public class Worshiper : MonoBehaviour
             case Elemental.Ground :
                 WorshiperRenderer.sprite = groundWorshiper;
                 break;
+        }
+
+        if (newElemental == Elemental.Wind)
+        {
+            WindEffect.SetActive(true);
         }
     }
 }

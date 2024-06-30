@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LinePrefab: {fileID: 6515234099971443985, guid: 220eb0ad89d917e41a38efa82f8b5491, type: 3}
-  FireEffectPrefab: {fileID: 0}
+  FireEffectPrefab: {fileID: 1205644746463951299, guid: d58668935aa84d44b84dc71f1e5cba70, type: 3}
 --- !u!114 &123566767
 MonoBehaviour:
   m_ObjectHideFlags: 0

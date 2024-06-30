@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8127522909047839190}
@@ -125,6 +125,7 @@ MonoBehaviour:
   ground: {fileID: -3878557786174838139, guid: f2d10534df520418bac351f67acbc34d, type: 3}
   GodSprite: {fileID: 0}
   WaterEffect: {fileID: 4625943390836050241}
+  GroundEffect: {fileID: 7127224445803567073, guid: bf5bfdf4142b76642bc87f7e4c010d0d, type: 3}
   NodeTextMesh: {fileID: 7237556339319794069}
   ConnectedNodes: []
   shootAudio: {fileID: -276983073596676847}

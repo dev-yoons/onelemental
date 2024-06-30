@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      god_fire_dead_0: 5496309175912355222
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

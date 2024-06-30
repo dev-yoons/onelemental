@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Onelemental.Enum;
+using System.Text.RegularExpressions;
+using UnityEngine.SceneManagement;
 
 namespace Onelemental.Managers
 {
@@ -169,8 +171,12 @@ namespace Onelemental.Managers
 
             string currentElement = GameManager.Instance.PlayerElemental.ToString();
 
-            int currentStage = PlayerPrefs.GetInt($"{currentElement}CurrentStage");
-            PlayerPrefs.SetInt($"{currentElement}CurrentStage", currentStage+1);
+            int bestStage = PlayerPrefs.GetInt($"{GameManager.Instance.PlayerElemental}CurrentStage");
+            int currentStage = CurrentStage();
+            if (currentStage > bestStage)
+            {
+                PlayerPrefs.SetInt($"{GameManager.Instance.PlayerElemental}CurrentStage", currentStage);
+            }
 
             return true;
         } 
@@ -187,6 +193,22 @@ namespace Onelemental.Managers
         static public bool CheckSurvive()
         {
             return UnityEngine.Random.value < SurviveRatio;
+        }
+        private int CurrentStage()
+        {
+            string currentScene = SceneManager.GetActiveScene().name;
+            Match match = Regex.Match(currentScene, @"\d+");
+
+            if (match.Success)
+            {
+                // 숫자 부분이 발견되면 이를 정수로 변환하여 반환
+                return int.Parse(match.Value);
+            }
+            else
+            {
+                // 숫자 부분이 없으면 0 반환 (또는 원하는 기본값 설정)
+                return 0;
+            }
         }
     }
 }

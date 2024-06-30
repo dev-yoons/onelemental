@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      god_water_dead_0: -3702026130026171489
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

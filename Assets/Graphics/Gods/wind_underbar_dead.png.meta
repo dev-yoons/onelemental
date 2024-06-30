@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      wind_underbar_dead_0: 8713960110454455242
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

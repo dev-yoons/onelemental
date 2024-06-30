@@ -154,7 +154,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      god_wind_dead_0: -6785629418690507362
+      god_wind_dead_1: -4182192059318048709
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

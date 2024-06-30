@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      worshiper_water_0: -3418874670035494972
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -25,7 +25,7 @@ public class StageBlocker : MonoBehaviour
         if (PlayerPrefs.HasKey($"{currentElement}CurrentStage"))
         {
             currentStage = PlayerPrefs.GetInt($"{currentElement}CurrentStage");
-            for (int i = 1; i < currentStage; i++)
+            for (int i = 1; i <= currentStage; i++)
             {
                 OpenBlocker(i);
             }

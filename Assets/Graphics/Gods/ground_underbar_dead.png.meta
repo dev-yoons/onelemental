@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ground_underbar_dead_0: 8637098612067818691
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

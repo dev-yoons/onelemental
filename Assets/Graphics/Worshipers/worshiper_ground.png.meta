@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      worshiper_ground_0: -4443886859276567487
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

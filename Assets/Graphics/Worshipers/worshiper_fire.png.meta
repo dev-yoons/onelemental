@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      worshiper_fire_0: -7010950108511632228
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -26,7 +26,8 @@ public class LoadSceneManager : MonoBehaviour
     public void NextStage()
     {
         string currentScene = SceneManager.GetActiveScene().name;
-        IncrementSceneNumber(currentScene);
+        string nextScene = IncrementSceneNumber(currentScene);
+        SceneManager.LoadScene(nextScene);
     }
 
     public void GoStage1()

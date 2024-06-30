@@ -393,7 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerElemental: 1
   AllNodesInStage: []
-  gameTimer: {fileID: 0}
+  gameTimer: {fileID: 921865980}
   gameOver: {fileID: 172747238}
   gameClear: {fileID: 1259541133}
 --- !u!4 &123566765
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29b8ec1543184772805a552d5e6a604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 0}
+  timerText: {fileID: 921865979}
 --- !u!82 &123566768
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1282,6 +1282,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4eebff6e58e247208b1e9a4def45562f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &921865979 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7035061845469205741, guid: f1417d4526c14404982f3e7476ba378b, type: 3}
+  m_PrefabInstance: {fileID: 1564081832}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &921865980 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7075610809818480982, guid: f1417d4526c14404982f3e7476ba378b, type: 3}
+  m_PrefabInstance: {fileID: 1564081832}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b29b8ec1543184772805a552d5e6a604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &948969952 stripped

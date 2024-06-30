@@ -184,7 +184,7 @@ namespace Onelemental.Managers
             int currentStage = CurrentStage();
             if (currentStage > bestStage)
             {
-                PlayerPrefs.SetInt($"{GameManager.Instance.PlayerElemental}CurrentStage", currentStage);
+                PlayerPrefs.SetInt($"{GameManager.Instance.PlayerElemental}CurrentStage", currentStage+1);
             }
 
             return true;

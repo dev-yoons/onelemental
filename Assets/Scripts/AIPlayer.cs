@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Onelemental.Enum;
 using Onelemental.Managers;
+using UnityEngine.SceneManagement;
+using System.Text.RegularExpressions;
 
 public class AIPlayer : Player
 {  
@@ -14,7 +16,21 @@ public class AIPlayer : Player
 
     public float AIPatternStartDelayTime = 1.0f;
 
+    public float[] AIStagePatterTime = { 5.0f, 5.0f, 5.0f, 5.0f, 5.0f }; 
+
     public int AttackWorshiperCriterion = 5;
+
+    private void SetAIPatternTime()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        Match match = Regex.Match(sceneName, @"\d+");
+
+        if (match.Success)
+        {
+            int number = int.Parse(match.Value);
+            AIPatternTime = AIStagePatterTime[number-1]; 
+        } 
+    }
 
     // 시작 지연 시간 걸고 AI 패턴 시작
 

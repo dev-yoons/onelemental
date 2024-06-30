@@ -226,11 +226,11 @@ MonoBehaviour:
   FireGodSprite: {fileID: -5923111743283430784, guid: f89cce737ef4c4231ba628248578e91f, type: 3}
   WaterGodSprite: {fileID: -970196767004630840, guid: fe94fa5ea02ea4a34bc9d9fd19c3066b, type: 3}
   WindGodSprite: {fileID: -3178105920093247467, guid: 513f844dc1bf341be854d228087cc167, type: 3}
-  GroundGodSprite: {fileID: -5923111743283430784, guid: f89cce737ef4c4231ba628248578e91f, type: 3}
+  GroundGodSprite: {fileID: 6255295499815785800, guid: 0908cc570f7bfb140a16030e9cfeedbd, type: 3}
   FireGodDeadSprite: {fileID: 5496309175912355222, guid: 56efd2b82ab074d45869abc4bbeeb4b7, type: 3}
   WaterGodDeadSprite: {fileID: -3702026130026171489, guid: 0da7d40a8da1a4c06954bb6d22341580, type: 3}
   WindGodDeadSprite: {fileID: -6785629418690507362, guid: 4f9a68fa5557c4c56b6ef670d2166c8f, type: 3}
-  GroundGodDeadSprite: {fileID: 5496309175912355222, guid: 56efd2b82ab074d45869abc4bbeeb4b7, type: 3}
+  GroundGodDeadSprite: {fileID: 2831222656546882295, guid: 78662cfebfe1d7e4bb8b386279305b23, type: 3}
   FireGodUnderbarSprite: {fileID: -4461338417549688653, guid: 15e5e9e5ca6a14247997dd0a7f889866, type: 3}
   WaterGodUnderbarSprite: {fileID: -7252699890329907020, guid: bcbeaa8eb2ffb43fab3697eb690c1e98, type: 3}
   WindGodUnderbarSprite: {fileID: -4973929684120892488, guid: a14933231aede4d9e88151fd2b0ab6ab, type: 3}

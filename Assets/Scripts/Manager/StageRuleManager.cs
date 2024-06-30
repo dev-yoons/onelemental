@@ -198,7 +198,7 @@ namespace Onelemental.Managers
                 gameTimer.StopTimer();
         }
 
-        const float SurviveRatio = 0.1f;
+        const float SurviveRatio = 0.15f;
         static public bool CheckSurvive()
         {
             return UnityEngine.Random.value < SurviveRatio;

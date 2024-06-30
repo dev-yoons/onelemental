@@ -5,7 +5,9 @@ using Onelemental.Managers;
 
 public class PrefabManager : MonoBehaviour
 {
-    public GameObject LinePrefab; 
+    public GameObject LinePrefab;
+
+    public GameObject FireEffectPrefab;
 
     public void Start()
     {

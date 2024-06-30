@@ -125,6 +125,9 @@ public class Node : MonoBehaviour
                 if (UnityEngine.Random.value < EnumStatics.FireDoubleAttackRatio)
                 {
                     damage += EnumStatics.FireAttackAdditionalDamage;
+                    Vector3 effectPosition = gameObject.transform.position;
+                    effectPosition.z += 3;
+                    Instantiate(GameManager.PrefabManager.FireEffectPrefab, effectPosition, Quaternion.identity);
                 }
             }   
             

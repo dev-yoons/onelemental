@@ -98,8 +98,11 @@ public class Node : MonoBehaviour
             StopCoroutine(AttackCorroutine[destination]);
             AttackCorroutine.Remove(destination);
         }
-        Destroy(AttackLine[destination].gameObject);
-        AttackLine.Remove(destination);
+        if (AttackLine.ContainsKey(destination))
+        {
+            Destroy(AttackLine[destination].gameObject);
+            AttackLine.Remove(destination); 
+        } 
     } 
 
     private void DecreaseWorshipers()

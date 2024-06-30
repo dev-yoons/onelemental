@@ -72,7 +72,7 @@ namespace Onelemental.Managers
 
                     startnode.SetCurrentElemental(player.Elemental);
                 }
-                if (startnode.OwningByArchEnemy)
+                if (!startnode.OwningByEnemy && startnode.OwningByArchEnemy)
                 {
                     Player player = ElementalPlayers[Enum.EnumStatics.LosingElemental(PlayerElemental)];
                     player.AddOwningNode(startnode);

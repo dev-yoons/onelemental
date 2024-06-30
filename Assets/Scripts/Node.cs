@@ -18,9 +18,7 @@ public class Node : MonoBehaviour
     private float curProductionTime;
 
     // 이 숫자보다 숭배자가 적어지면 공격 불가 상태가 됩니다.
-    public const float LeastWorshipers = 10;
-
-    public Elemental StartElemental = Elemental.Neutral;
+    public const float LeastWorshipers = 10; 
 
     private Elemental CurrentElemental = Elemental.Neutral;
     public Elemental GetCurrentElemental() { return CurrentElemental; }
@@ -28,6 +26,10 @@ public class Node : MonoBehaviour
     public bool IsMainNode = false;
 
     public bool IsPlayerMainNode = false;
+
+    public bool OwningByEnemy = false;
+
+    public bool OwningByArchEnemy = false;
 
     public GameObject worshiperObject;
 
@@ -67,7 +69,7 @@ public class Node : MonoBehaviour
     void Awake()
     {
         CurrentWorshipers = StartWorshipers;
-        SetCurrentElemental(StartElemental);
+        SetCurrentElemental(Elemental.Neutral);
 /*        if (StartElemental == Elemental.Neutral)
             CurrentWorshipers = 0;*/
         NodeTextMesh.text = CurrentWorshipers.ToString();

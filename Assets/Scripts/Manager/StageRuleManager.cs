@@ -45,7 +45,7 @@ namespace Onelemental.Managers
                     playerComp = newPlayer.AddComponent<AIPlayer>();
                 ElementalPlayers.Add(elemental, playerComp);
             }
-
+            List<Elemental> enemyElementals = new List<Elemental>();
             List<Elemental> notInitializedElementals = new List<Elemental>();
             foreach (Elemental elemental in System.Enum.GetValues(typeof(Elemental)))
             {
@@ -54,6 +54,7 @@ namespace Onelemental.Managers
                 if (elemental == PlayerElemental)
                     continue;
                 notInitializedElementals.Add(elemental);
+                enemyElementals.Add(elemental);
             } 
 
             Node[] startnodes = Resources.FindObjectsOfTypeAll<Node>();
@@ -61,11 +62,19 @@ namespace Onelemental.Managers
             {
                 AllNodesInStage.Add(startnode);
 
-                if (startnode.GetCurrentElemental() != Elemental.Neutral) 
-                { 
-                    Player player = ElementalPlayers[startnode.GetCurrentElemental()];
+                if (startnode.OwningByEnemy) 
+                {
+                    Player player = ElementalPlayers[enemyElementals[UnityEngine.Random.Range(0, enemyElementals.Count)]];
+                     
+                    player.AddOwningNode(startnode);
 
-                    player.AddOwningNode(startnode); 
+                    startnode.SetCurrentElemental(player.Elemental);
+                }
+                if (startnode.OwningByArchEnemy)
+                {
+                    Player player = ElementalPlayers[Enum.EnumStatics.LosingElemental(PlayerElemental)];
+                    player.AddOwningNode(startnode);
+                    startnode.SetCurrentElemental(player.Elemental);
                 }
 
                 if (startnode.IsMainNode)

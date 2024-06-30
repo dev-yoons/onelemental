@@ -16,7 +16,7 @@ public class AIPlayer : Player
 
     public float AIPatternStartDelayTime = 1.0f;
 
-    public float[] AIStagePatterTime = { 5.0f, 5.0f, 5.0f, 5.0f, 5.0f }; 
+    public float[] AIStagePatterTime = { 5.0f, 5.0f, 5.0f, 4.0f, 3.0f }; 
 
     public int AttackWorshiperCriterion = 5;
 

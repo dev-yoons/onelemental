@@ -50,6 +50,8 @@ public class Node : MonoBehaviour
     // 신 이미지
     public GameObject GodSprite;
 
+    public GameObject WaterEffect;
+
     public TextMeshPro NodeTextMesh;
 
     public List<Node> ConnectedNodes = new List<Node>();
@@ -221,6 +223,15 @@ public class Node : MonoBehaviour
     public void SetCurrentElemental(Elemental newElemental)
     {
         CurrentElemental = newElemental;
+
+        if (newElemental == Elemental.Water)
+        {
+            WaterEffect.SetActive(true);
+        }
+        else
+        {
+            WaterEffect.SetActive(false);
+        }
 
         if (IsMainNode)
         {

@@ -8,6 +8,7 @@ public class GodImage : MonoBehaviour
     public GameObject GodImageObject;
     public GameObject UnderBarImageObject;
     public GameObject SymbolObject;
+    public GameObject DeathEffectObject; // 애니메이션용 오브젝트
 
     public Sprite FireGodSprite;
     public Sprite WaterGodSprite;
@@ -40,6 +41,29 @@ public class GodImage : MonoBehaviour
     private Sprite GodUnderBarDeadSprite;
     private Sprite SymbolSprite;
 
+    private Animator animator;
+    private SpriteRenderer deathEffectSpriteRenderer;
+
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+        deathEffectSpriteRenderer = DeathEffectObject.GetComponent<SpriteRenderer>();
+
+        if (DeathEffectObject == null)
+        {
+            Debug.LogError("DeathEffectObject is not assigned.");
+        }
+    }
+
+    void Start()
+    {
+        // DeathEffectObject의 스프라이트 렌더러 비활성화
+        if (deathEffectSpriteRenderer != null)
+        {
+            deathEffectSpriteRenderer.enabled = false;
+        }
+    }
+
     public void SetElemental(Elemental elemental)
     {
         switch (elemental)
@@ -71,7 +95,7 @@ public class GodImage : MonoBehaviour
                 GodUnderBarSprite = GroundGodUnderbarSprite;
                 GodUnderBarDeadSprite = GroundGodUnderbarDeadSprite;
                 SymbolSprite = GroundSymbolSprite;
-                break; 
+                break;
             default:
                 break;
         }
@@ -100,8 +124,44 @@ public class GodImage : MonoBehaviour
     }
 
     public void GodDead()
-    { 
+    {
+        Debug.Log("GodDead called");
+
+        // DeathEffect 오브젝트 활성화 및 애니메이션 재생
+        if (DeathEffectObject != null)
+        {
+            Debug.Log("DeathEffectObject activated");
+            StartCoroutine(PlayDeathEffectAndChangeSprite());
+        }
+        else
+        {
+            Debug.LogError("DeathEffectObject is null.");
+        }
+    }
+
+    private IEnumerator PlayDeathEffectAndChangeSprite()
+    {
+        // DeathEffect 스프라이트 렌더러 활성화
+        if (deathEffectSpriteRenderer != null)
+        {
+            deathEffectSpriteRenderer.enabled = true;
+        }
+
+        // DeathEffect 애니메이션 트리거
+        Animator deathEffectAnimator = DeathEffectObject.GetComponent<Animator>();
+        if (deathEffectAnimator != null)
+        {
+            Debug.Log("DeathEffect animation trigger set");
+            deathEffectAnimator.SetTrigger("TriggerDeathEffect");
+        }
+
+        // 2초 대기
+        yield return new WaitForSeconds(0.1f);
+
+        // 스프라이트 변경
         GodImageObject.GetComponent<SpriteRenderer>().sprite = GodDeadSprite;
         UnderBarImageObject.GetComponent<SpriteRenderer>().sprite = GodUnderBarDeadSprite;
+
+        Debug.Log("Sprite changed to GodDeadSprite");
     }
 }

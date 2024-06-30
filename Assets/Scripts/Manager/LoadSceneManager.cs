@@ -30,9 +30,9 @@ public class LoadSceneManager : MonoBehaviour
         SceneManager.LoadScene(nextScene);
     }
 
-    public void GoStage1()
+    public void GoStage(int stageNum)
     {
-        SceneManager.LoadScene("Stage1");
+        SceneManager.LoadScene($"Stage{stageNum}");
     }
 
     public void GoStageN(int n)

@@ -166,6 +166,12 @@ namespace Onelemental.Managers
 
             gameClear.GetComponent<ClearWidget>().Init(gameTimer.GetElapsedTime()); ;
             gameClear.SetActive(true);
+
+            string currentElement = GameManager.Instance.PlayerElemental.ToString();
+
+            int currentStage = PlayerPrefs.GetInt($"{currentElement}CurrentStage");
+            PlayerPrefs.SetInt($"{currentElement}CurrentStage", currentStage+1);
+
             return true;
         } 
 
